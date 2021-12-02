@@ -2641,7 +2641,7 @@
 		x = 35
 		y = 0
 		#relative_position_id = ITA_prospect_for_oil
-		cost = 5
+		cost = 10
 		ai_will_do = {
 			factor = 1
 		}
