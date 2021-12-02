@@ -2634,7 +2634,7 @@
 	}
 	focus = {
 		id = ITA_Roman_Ambitions
-		icon = 
+		icon = GFX_goal_generic_demand_territory
 		text = ITA_Roman_Ambitions
 		mutually_exclusive = { focus = ITA_victoryinETH }
 		#prerequisite = { focus = ITA_prospect_for_oil }
