@@ -2635,12 +2635,17 @@
 	focus = {
 		id = ITA_Roman_Ambitions
 		icon = GFX_goal_generic_demand_territory
-		text = ITA_Roman_Ambitions
 		mutually_exclusive = { focus = ITA_victoryinETH }
 		#prerequisite = { focus = ITA_prospect_for_oil }
 		x = 35
 		y = 0
 		#relative_position_id = ITA_prospect_for_oil
+		available = {
+			OR = {
+				owns_state = 271
+				ETH = { is_puppet_of = ITA }
+			}
+		}
 		cost = 10
 		ai_will_do = {
 			factor = 1
@@ -2649,10 +2654,46 @@
 		available_if_capitulated = yes
 		search_filters = { FOCUS_FILTER_INDUSTRY }
 
-		completion_reward = {create_wargoal = {
-				type = take_state_focus
-				target = ENG
-				expire = 0
-				generator = { 118 453 116 183 } # Gibraltar, Suez, Malta, Cyprus
-			}
+		completion_reward = {
+			add_political_power = 150
+			add_popularity = {
+						ideology = fascism
+						popularity = 0.05 }
+		}
+	}	
+	focus = {
+		id = ITA_Raise_Legions
+		icon = GFX_focus_generic_manpower
+		#mutually_exclusive = { focus = ITA_victoryinETH }
+		prerequisite = { focus = ITA_Roman_Ambitions }
+		relative_position_id = ITA_victoryinETH
+		x = 18
+		y = 1
+	
+		cost = 10
+		ai_will_do = {
+			factor = 1
+		}
+
+		available_if_capitulated = yes
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+
+		completion_reward = {
+		  add_manpower = 100000
+		  add_equipment_to_stockpile = {
+
+        type = infantry_equipment_1
+
+        amount = 2500
+		  }
+		add_equipment_to_stockpile = {
+
+        type = support_equipment
+
+        amount = 100
+
+    }
+    
+		}
+	}
 }
