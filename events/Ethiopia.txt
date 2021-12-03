@@ -23,10 +23,10 @@ country_event = {
 			transfer_state = 559
 			white_peace = ITA
 		}
-		unlock_national_focus = ITA_victoryinETH
+		unlock_national_focus = ITA_Failure_Africa
 		add_popularity = {
 			ideology = fascism
-			popularity = -0.25
+			popularity = -0.35
 		}
 		add_stability = -0.1
 		hidden_effect = {

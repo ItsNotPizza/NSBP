@@ -3254,3 +3254,25 @@
  germany.1043.t:0 "[FROM.GetNameDefCap] Refuses Demands"
  germany.1043.desc:0 "Despite the imbalance of power, [FROM.GetAdjective] diplomats have refused our demands for the cession of the Sudetenland. It is certain that war must follow."
  germany.1043.a:0 "Drat."
+ italy.17.t:0 "Communists march on Rome"
+ italy.17.d:0 "With the recent failure in Africa and unstability of the goverment the people have been unhappy, Today at 8:17 am a group of Communists marched on Rome and took control of the government"
+ italy.17.a:0 "Long live Italy!"
+ italy.18.t:0 "Italian Demands"
+ italy.18.d:0 "Communists Demand subjection"
+ italy.18.a:0 "So be it"
+ italy.18.b:0 "This Means War!"
+ italy.19.t:0 "Italian backed Coup"
+ italy.19.d:0 "Italian backed communist militas took over the capitol today supporting a latin union"
+ italy.19.a:0 "We Must Submit"
+ italy.19.b:0 "This means War!"
+ italy.20.t:0 "Italian backed Coup"
+ italy.20.d:0 "Italian backed communist militas took over the capitol today supporting a latin union"
+ italy.20.a:0 "We Must Submit"
+ italy.20.b:0 "This means War!"
+ italy.21.t:0 "People demand referendum"
+ italy.21.d:0 "People demand change into the old roman republic we have no choice but to accept"
+ italy.21.a:0 "Long live the republic"
+
+
+ 
+

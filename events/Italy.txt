@@ -597,3 +597,141 @@ country_event = {
 	}
 }
 
+
+# Italy Communists March On Rome
+country_event = {
+	id = italy.17
+	title = italy.17.t 
+	desc = italy.17.d 
+
+	picture = GFX_report_event_worker_protests
+
+	is_triggered_only = yes
+
+	option = {
+		name = italy.17.a
+		set_politics = {
+			ruling_party = communism
+			elections_allowed = no }
+	}
+}
+
+
+# Italy Communist Puppet greece
+country_event = {
+	id = italy.18
+	title = italy.18.t 
+	desc = italy.18.d 
+
+	picture = GFX_report_event_worker_protests
+
+	is_triggered_only = yes 
+
+	option = {
+		name = italy.18.a 
+		ITA = {Puppet = GRE }
+	}
+
+	option = {
+		name = italy.18.b
+		ITA = {create_wargoal = {
+					type = puppet_wargoal_focus
+					target = GRE
+					generator = { 44 }
+				}
+		}
+	}
+
+}
+
+
+# Italy Latin Union Coup 
+country_event = {
+	id = italy.19
+	title = italy.19.t 
+	desc = italy.19.d 
+
+	picture = GFX_report_event_worker_protests
+
+	is_triggered_only = yes 
+
+	option = {
+		ai_chance = { factor = 90 }
+		name = italy.19.a 
+		set_politics = {
+			ruling_party = communism
+			elections_allowed = no }
+			add_popularity = {
+						ideology = communism
+						popularity = 0.30 }
+
+	}
+	option = {
+		ai_chance = { factor = 10 }
+		name = italy.19.b 
+		ITA = {create_wargoal = {
+					type = puppet_wargoal_focus
+					target = ROM
+					generator = { 44 }
+				}
+	}
+}
+}
+# Italy Port Union Coup 
+country_event = {
+	id = italy.20
+	title = italy.20.t 
+	desc = italy.20.d 
+
+	picture = GFX_report_event_worker_protests
+
+	is_triggered_only = yes 
+
+	option = {
+		ai_chance = { factor = 90 }
+		name = italy.20.a 
+		set_politics = {
+			ruling_party = communism
+			elections_allowed = no }
+			add_popularity = {
+						ideology = communism
+						popularity = 0.30 }
+	}
+
+
+	option = {
+		ai_chance = { factor = 10 }
+		name = italy.20.b 
+		ITA = {Create_wargoal = {
+			type = puppet_wargoal_focus
+			target = POR
+			generator = {44}
+
+		}}
+	}	
+}	
+# Italy Democratic Government
+country_event = {
+	id = italy.21
+	title = italy.21.t 
+	desc = italy.21.d 
+
+	picture = GFX_report_event_worker_protests
+
+	option = {
+		name = italy.21.a 
+		set_politics = {
+			ruling_party = democratic
+			elections_allowed = yes }
+			add_popularity = {
+						ideology = democratic
+						popularity = 0.05 }
+	}
+}		
+
+
+	
+
+	
+}
+

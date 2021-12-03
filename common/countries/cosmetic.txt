@@ -800,3 +800,7 @@ SOV_ROME = {
 	color = rgb { 128 0 128 }
 	color_ui = rgb { 128 0 128 }
 }
+LAU_ITA = {
+	color = rgb { 17 8 61 }
+	color_ui = rgb { 128 0 128 }
+}

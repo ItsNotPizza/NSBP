@@ -1515,11 +1515,9 @@
 		}
 		mutually_exclusive = { 
 			focus = ITA_Roman_Ambitions
+			focus = ITA_Failure_Africa
 		}
-		bypass = {
-			ETH = { exists = yes }
-			NOT = { has_war_with = ETH }
-		}
+		
 
 		available_if_capitulated = yes
 
@@ -2634,10 +2632,11 @@
 	}
 	focus = {
 		id = ITA_Roman_Ambitions
-		icon = GFX_goal_generic_demand_territory
-		mutually_exclusive = { focus = ITA_victoryinETH }
+		icon = GFX_focus_generic_italy_first
+		mutually_exclusive = { focus = ITA_victoryinETH
+		focus =  ITA_Failure_Africa }
 		#prerequisite = { focus = ITA_prospect_for_oil }
-		x = 35
+		x = 30
 		y = 0
 		#relative_position_id = ITA_prospect_for_oil
 		available = {
@@ -2666,11 +2665,11 @@
 		icon = GFX_focus_generic_manpower
 		#mutually_exclusive = { focus = ITA_victoryinETH }
 		prerequisite = { focus = ITA_Roman_Ambitions }
-		relative_position_id = ITA_victoryinETH
-		x = 18
+		relative_position_id = ITA_Roman_Ambitions
+		x = -2
 		y = 1
 	
-		cost = 10
+		cost = 5
 		ai_will_do = {
 			factor = 1
 		}
@@ -2692,8 +2691,2044 @@
 
         amount = 100
 
-    }
+             }
     
 		}
 	}
+
+	focus = {
+		id = ITA_Improve_Miltary_Industry
+		icon = GFX_goal_generic_construct_mil_factory
+		#mutually_exclusive = { focus = ITA_victoryinETH }
+		prerequisite = { focus = ITA_Roman_Ambitions }
+		relative_position_id = ITA_Roman_Ambitions
+		x = 2
+		y = 1
+	
+		cost = 10
+		ai_will_do = {
+			factor = 1
+		}
+
+		available_if_capitulated = yes
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+
+		completion_reward = { random_owned_controlled_state = {
+				limit = {
+					arms_factory > 0
+					free_building_slots = {
+						building = arms_factory
+						size > 1
+						include_locked = yes
+					}
+					is_on_continent = europe
+				}
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+					type = arms_factory
+					level = 2
+					instant_build = yes
+				}
+			}
+			random_owned_controlled_state = {
+				limit = {
+					arms_factory > 0
+					free_building_slots = {
+						building = arms_factory
+						size > 1
+						include_locked = yes
+					}
+					is_on_continent = europe
+				}
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+					type = arms_factory
+					level = 2
+					instant_build = yes
+				}
+			}
+			if = {
+				limit = {
+					NOT = {
+						any_owned_state = {
+							arms_factory > 0
+							free_building_slots = {
+								building = arms_factory
+								size > 1
+								include_locked = yes
+							}
+							is_on_continent = europe
+						}
+					}					
+				}
+				random_owned_controlled_state = {
+					limit = {
+						arms_factory > 0
+						free_building_slots = {
+							building = arms_factory
+							size > 1
+							include_locked = yes
+						}
+						is_on_continent = europe
+					}
+					add_extra_state_shared_building_slots = 2
+					add_building_construction = {
+						type = arms_factory
+						level = 2
+						instant_build = yes
+					}
+				}
+				random_owned_controlled_state = {
+					limit = {
+						arms_factory > 0
+						free_building_slots = {
+							building = arms_factory
+							size > 1
+							include_locked = yes
+						}
+						is_on_continent = europe
+					}
+					add_extra_state_shared_building_slots = 2
+					add_building_construction = {
+						type = arms_factory
+						level = 2
+						instant_build = yes
+					}
+				}			
+			}
+			if = {
+				limit = {
+					NOT = {
+						any_owned_state = {
+							free_building_slots = {
+								building = arms_factory
+								size > 1
+								include_locked = yes
+							}
+							is_on_continent = europe
+						}
+					}					
+				}
+				random_owned_controlled_state = {
+					limit = {
+						free_building_slots = {
+							building = arms_factory
+							size > 1
+							include_locked = yes
+						}
+					}
+					add_extra_state_shared_building_slots = 2
+					add_building_construction = {
+						type = arms_factory
+						level = 2
+						instant_build = yes
+					}
+				}
+				random_owned_controlled_state = {
+					limit = {
+						free_building_slots = {
+							building = arms_factory
+							size > 1
+							include_locked = yes
+						}
+					}
+					add_extra_state_shared_building_slots = 2
+					add_building_construction = {
+						type = arms_factory
+						level = 2
+						instant_build = yes
+					}
+				}			
+			}
+		}
+	}	
+	focus = {
+		id = ITA_rome_albania_war_goal
+		icon = GFX_goal_generic_major_war
+		prerequisite = { focus = ITA_Raise_Legions  focus = ITA_Improve_Miltary_Industry }
+		will_lead_to_war_with = ALB
+		x = 0
+		y = 2
+		relative_position_id = ITA_Roman_Ambitions
+		
+		available = {
+			country_exists = ALB
+		}
+
+		cost = 10
+		ai_will_do = {
+			factor = 10
+			modifier = {
+				factor = 0
+				date < 1937.1.1
+			}	
+		}	
+		search_filters = { FOCUS_FILTER_ANNEXATION }
+
+		completion_reward = {
+			if = {
+				limit = {
+					ALB = { has_war = no }
+				}
+				ALB = { country_event = { id = italy.3 } }
+			}
+			else = {
+				create_wargoal = {
+					type = take_state_focus
+					target = ALB
+					generator = { 44 }
+				}
+			}
+		}
+	  }
+	  focus = {
+		id = ITA_Yugoslava_War
+		icon = GFX_focus_generic_little_entente
+		prerequisite = { focus = ITA_rome_albania_war_goal  }
+		#mutually_exclusive = { focus = ITA_yugoslavia_friend }
+		x = -6
+		y = 1
+		relative_position_id = ITA_rome_albania_war_goal 
+		cost = 10
+		available = { 
+			has_army_manpower = { size > 350000 
+			}
+		}
+		ai_will_do = {
+			factor = 1
+		}
+
+		bypass = {
+			NOT = { country_exists = YUG }
+		}
+
+		completion_reward = {
+			add_state_core = 102
+			add_state_core = 103
+			add_state_core = 105
+			add_named_threat = { threat = 4 name = ITA_slovenia_dalmatia_claims_threat }
+			USA = {
+				set_country_flag = { flag = USA_yugoslavia_window days = 60 value = 1 }
+			}
+			YUG = {
+				add_opinion_modifier = { target = ITA modifier = claimed_western_yugoslavia }
+				if = {
+					limit = {
+						ROOT = { has_government = fascism }
+						NOT = { has_government = fascism }
+						NOT = { has_idea_with_trait = fascist_demagogue }
+						fascism < 0.3
+					}
+					add_popularity = {
+						ideology = fascism
+						popularity = 0.01
+					}
+				}
+				if = {
+					limit = { 
+						ROOT = { has_government = communism }
+						NOT = { has_government = communism }
+						NOT = { has_idea_with_trait = communist_revolutionary }
+						NOT = { has_completed_focus = YUG_recognize_the_soviet_union }
+						communism < 0.3
+					}
+					add_popularity = {
+						ideology = communism
+						popularity = 0.01
+					}
+				}
+				if = {
+					limit = {
+						ROOT = { has_government = democratic }
+						NOT = { has_government = democratic }
+						NOT = { has_idea_with_trait = democratic_reformer }
+						democratic < 0.3
+					}
+					add_popularity = {
+						ideology = democratic
+						popularity = 0.01
+					}
+				}
+			}
+
+			hidden_effect = {
+				news_event = { hours = 6 id = news.192 }
+			}
+		}
+	}
+	focus = {
+	    id = ITA_Albania_Core
+		icon = GFX_goal_generic_political_pressure
+		#mutually_exclusive = { focus = ITA_victoryinETH }
+		prerequisite = { focus = ITA_rome_albania_war_goal  }
+		relative_position_id = ITA_rome_albania_war_goal
+		x = 0
+		y = 1
+	    available = { controls_state = 44
+		controls_state = 805 }
+		cost = 5
+		ai_will_do = {
+			factor = 1
+		}
+
+		available_if_capitulated = yes
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+
+		completion_reward = {
+		add_state_core = 44
+		add_state_core = 805
+		}
+	}
+	focus = {
+	    id = ITA_African_Core
+		icon = GFX_goal_generic_national_unity
+		#mutually_exclusive = { focus = ITA_victoryinETH }
+		prerequisite = { focus = ITA_rome_albania_war_goal  }
+		relative_position_id = ITA_rome_albania_war_goal
+		x = -4
+		y = 1
+	    available = { controls_state = 449
+		controls_state = 448 
+		controls_state = 450
+		controls_state = 451
+		controls_state = 663
+		controls_state = 662
+		controls_state = 661
+		controls_state = 550
+		controls_state = 271
+		controls_state = 559 }
+		cost = 20
+		ai_will_do = {
+			factor = 1
+		}
+
+		available_if_capitulated = yes
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+
+		completion_reward = {
+		add_state_core = 448
+		add_state_core = 450
+		add_state_core = 451
+		add_state_core = 663
+		add_state_core = 662
+		add_state_core = 661
+		add_state_core = 550
+		add_state_core = 271
+		add_state_core = 559
+		add_state_core = 452
+		add_state_core = 447
+		add_state_core = 446
+		add_state_core = 457
+		add_state_core = 456
+		add_state_core = 453
+		add_state_core = 551
+		add_state_core = 549
+		}
+
+	}
+	focus = {
+		id = ITA_Greece_Claims
+		icon = GFX_focus_GRE_bedrock_of_balkan_stability
+		#mutually_exclusive = { focus = ITA_victoryinETH }
+		prerequisite = { focus =  ITA_rome_albania_war_goal  }
+		relative_position_id =  ITA_rome_albania_war_goal 
+		x = -2
+		y = 1
+	    
+			available = { 
+			has_army_manpower = { size > 400000
+			} }
+		cost = 10
+		ai_will_do = {
+			factor = 1
+		}
+
+		available_if_capitulated = yes
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+
+		completion_reward = {	
+		add_state_core = 185 
+		add_state_core = 186
+		add_state_core = 182
+		create_wargoal = {
+					type = take_state_focus
+					target = GRE
+					generator = { 44 }
+		}
+		}
+	}
+	focus = {
+		id = ITA_Hungry_Goal
+		icon = GFX_focus_proclaim_the_restauration_of_Austria_Hungary
+		#mutually_exclusive = { focus = ITA_victoryinETH }
+		prerequisite = { focus =  ITA_rome_albania_war_goal  }
+		relative_position_id =  ITA_rome_albania_war_goal 
+		x = 2
+		y = 1
+	    
+			available = { 
+			has_army_manpower = { size > 375000
+			} }
+		cost = 10
+		ai_will_do = {
+			factor = 1
+		}
+
+		available_if_capitulated = yes
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+
+		completion_reward = {
+			create_wargoal = {
+					type = take_state_focus
+					target = HUN
+					generator = { 44 }
+		}
+	}
+	}
+	focus = {
+		id = ITA_Romania_Goal
+		icon = GFX_focus_rom_abdicate
+		#mutually_exclusive = { focus = ITA_victoryinETH }
+		prerequisite = { focus =  ITA_rome_albania_war_goal  }
+		relative_position_id =  ITA_rome_albania_war_goal 
+		x = 4
+		y = 1
+	    
+			available = { 
+			has_army_manpower = { size > 425000
+			} }
+		cost = 10
+		ai_will_do = {
+			factor = 1
+		}
+
+		available_if_capitulated = yes
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+
+		completion_reward = {
+			create_wargoal = {
+					type = take_state_focus
+					target = ROM
+					generator = { 44 }
+		}
+	}
+	}
+	focus = {
+		id = ITA_Bulgaria_Goal
+		icon = GFX_focus_BUL_promote_bulgarian_nationalism
+		#mutually_exclusive = { focus = ITA_victoryinETH }
+		prerequisite = { focus =  ITA_rome_albania_war_goal  }
+		relative_position_id =  ITA_rome_albania_war_goal 
+		x = 6
+		y = 1
+	    
+			available = { 
+			has_army_manpower = { size > 400000
+			} }
+		cost = 10
+		ai_will_do = {
+			factor = 1
+		}
+
+		available_if_capitulated = yes
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+
+		completion_reward = {
+			create_wargoal = {
+					type = take_state_focus
+					target = BUL
+					generator = { 44 }
+		}
+	}
+	}
+	focus = {
+		id = ITA_Turkey_Goal
+		icon = GFX_focus_generic_attack_turkey
+		#mutually_exclusive = { focus = ITA_victoryinETH }
+		prerequisite = { focus =  ITA_Albania_Core  }
+		prerequisite = { focus =  ITA_Bulgaria_Goal }
+		prerequisite = { focus =  ITA_Romania_Goal  }
+		prerequisite = { focus =  ITA_Hungry_Goal   }
+		prerequisite = { focus =  ITA_Greece_Claims }
+		prerequisite = { focus =  ITA_African_Core  }
+		prerequisite = { focus =  ITA_Yugoslava_War }
+		relative_position_id = ITA_Albania_Core 
+		x = 0
+		y = 1
+	    
+			available = { 
+			has_army_manpower = { size > 500000
+			} }
+		cost = 10
+		ai_will_do = {
+			factor = 1
+		}
+
+		available_if_capitulated = yes
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+
+		completion_reward = {
+			add_state_claim = 340
+			add_state_claim = 339
+			add_state_claim = 342
+			add_state_claim = 345
+			add_state_claim = 348
+			create_wargoal = {
+					type = take_state_focus
+					target = TUR
+					generator = { 44 }
+		}
+	}
+	}
+	focus = {
+		id = ITA_Syria_Goal
+		icon = GFX_goal_generic_major_war
+		#mutually_exclusive = { focus = ITA_victoryinETH }
+		prerequisite = { focus = ITA_Turkey_Goal   }
+		relative_position_id =  ITA_Turkey_Goal
+		x = 1
+		y = 1
+	    
+			available = { 
+			has_army_manpower = { size > 550000
+			} }
+		cost = 10
+		ai_will_do = {
+			factor = 1
+		}
+
+		available_if_capitulated = yes
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+
+		completion_reward = {
+			add_state_claim = 799
+			add_state_claim = 677
+			add_state_claim = 553
+			add_state_claim = 554
+			add_state_claim = 680
+			create_wargoal = {
+					type = take_state_focus
+					target = FRA
+					generator = { 44 }
+		}
+	}
+	}
+	focus = {
+		id = ITA_Middle_East_Goal
+		icon = GFX_focus_attack_britain
+		#mutually_exclusive = { focus = ITA_victoryinETH }
+		prerequisite = { focus = ITA_Turkey_Goal    }
+		relative_position_id =  ITA_Turkey_Goal
+		x = -1
+		y =  1
+	    
+			available = { 
+			has_army_manpower = { size > 550000
+			} }
+		cost = 10
+		ai_will_do = {
+			factor = 1
+		}
+
+		available_if_capitulated = yes
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+
+		completion_reward = {
+			add_state_claim = 455
+			add_state_claim = 454
+			add_state_claim = 183
+
+			create_wargoal = {
+					type = take_state_focus
+					target = ENG
+					generator = { 44 }
+		}
+	}
+	}
+	focus = {
+		id = ITA_Rome_Form
+		icon = GFX_goal_support_fascism
+		#mutually_exclusive = { focus = ITA_victoryinETH }
+		prerequisite = { focus =  ITA_Middle_East_Goal  }
+		prerequisite = { focus =  ITA_Syria_Goal        }
+		relative_position_id = ITA_Turkey_Goal 
+		x = 0
+		y = 2
+	    available = { 
+			controls_state = 102
+			controls_state = 109
+			controls_state = 103
+			controls_state = 104
+			controls_state = 804
+			controls_state = 105
+			controls_state = 45
+			controls_state = 764
+			controls_state = 107
+			controls_state = 108
+			controls_state = 802
+			controls_state = 803
+			controls_state = 106
+			controls_state = 44
+			controls_state = 805
+			controls_state = 185
+			controls_state = 186
+			controls_state = 47
+			controls_state = 731
+			controls_state = 184
+			controls_state = 187
+			controls_state = 48
+			controls_state = 212
+			controls_state = 211
+			controls_state = 801
+			controls_state = 155
+			controls_state = 43
+			controls_state = 154
+			controls_state = 82
+			controls_state = 81
+			controls_state = 46
+			controls_state = 77
+			controls_state = 341
+			controls_state = 797
+			controls_state = 340
+			controls_state = 339
+			controls_state = 342
+			controls_state = 345
+			controls_state = 183
+			controls_state = 677
+			controls_state = 799
+			controls_state = 553
+			controls_state = 454
+			controls_state = 453
+			controls_state = 446
+			controls_state = 447
+			controls_state = 452
+		}
+			
+
+		
+		cost = 10
+		ai_will_do = {
+			factor = 1
+		}
+
+		available_if_capitulated = yes
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+
+		completion_reward = {
+			add_state_core = 109 
+			add_state_core = 104
+			add_state_core = 804
+			add_state_core = 45
+			add_state_core = 764
+			add_state_core = 107
+			add_state_core = 108
+			add_state_core = 802
+			add_state_core = 803
+			add_state_core = 106
+			add_state_core = 47
+			add_state_core = 731
+			add_state_core = 184
+			add_state_core = 187
+			add_state_core = 212
+			add_state_core = 48
+			add_state_core = 801
+			add_state_core = 211
+			add_state_core = 155
+			add_state_core = 154
+			add_state_core = 43
+			add_state_core = 82
+			add_state_core = 81
+			add_state_core = 46
+			add_state_core = 77
+			add_state_core = 341
+			add_state_core = 340
+			add_state_core = 347
+			add_state_core = 356
+			add_state_core = 49
+			add_state_core = 343
+			add_state_core = 339
+			add_state_core = 342
+			add_state_core = 345
+			add_state_core = 346
+			add_state_core = 798
+			add_state_core = 348
+			add_state_core = 344
+			add_state_core = 799
+			add_state_core = 677
+			add_state_core = 554
+			add_state_core = 553
+			add_state_core = 680
+			add_state_core = 454
+			add_state_core = 455
+			add_state_core = 183
+			add_state_core = 116
+			add_state_core = 552
+
+			ITA = { set_cosmetic_tag = SPQR_UNIFIED_fascism }
+
+
 }
+	}
+	focus = {
+		id = ITA_Failure_Africa
+		icon =  GFX_focus_CZE_german_puppet
+		mutually_exclusive = { focus = ITA_victoryinETH focus =  ITA_Roman_Ambitions   }
+		#prerequisite = {   }
+		#relative_position_id =  
+		x =  45
+		y =  0
+	    
+			available = { 
+		 NOT {controls_state = 271
+		 controls_state = 550
+		 controls_state = 559 
+		 has_war_with = ETH } 
+			} 
+		cost = 10
+		ai_will_do = {
+			factor = 1
+		}
+
+		available_if_capitulated = yes
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+
+		completion_reward = {
+			add_popularity = {
+						ideology = communism
+						popularity = 0.15 }
+			add_stability = -0.05
+			
+}
+	}
+	focus = {
+		id = ITA_Communism_Influnce
+		icon = GFX_goal_support_communism
+		#mutually_exclusive = { focus = }
+		prerequisite = { focus =   ITA_Failure_Africa   }
+		relative_position_id =   ITA_Failure_Africa
+		x =  0
+		y =  1
+	    
+	
+		cost = 10
+		ai_will_do = {
+			factor = 1
+		}
+
+		available_if_capitulated = yes
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+
+		completion_reward = {
+			add_popularity = {
+						ideology = communism
+						popularity = 0.05 }
+	    add_ideas = communist_influence
+	}
+}
+focus = {
+		id = ITA_Communism_Industry
+		icon = GFX_goal_generic_construct_civ_factory
+		#mutually_exclusive = { focus = }
+		prerequisite = { focus =   ITA_Failure_Africa   }
+		relative_position_id =   ITA_Failure_Africa
+		x =  -2
+		y =  1
+	    
+	
+		cost = 10
+		ai_will_do = {
+			factor = 1
+		}
+
+		available_if_capitulated = yes
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+
+		completion_reward = {
+		random_owned_controlled_state = {
+				limit = {
+					free_building_slots = {
+						building = industrial_complex
+						size > 1
+						include_locked = yes
+					}
+					is_on_continent = europe
+				}
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+					type = industrial_complex
+					level = 2
+					instant_build = yes
+				}
+			}
+			random_owned_controlled_state = {
+				limit = {
+					free_building_slots = {
+						building = industrial_complex
+						size > 1
+						include_locked = yes
+					}
+					is_on_continent = europe
+				}
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+					type = industrial_complex
+					level = 2
+					instant_build = yes
+				}
+			}
+			if = {
+				limit = {
+					NOT = {
+						any_owned_state = {
+							free_building_slots = {
+								building = industrial_complex
+								size > 1
+								include_locked = yes
+							}
+							is_on_continent = europe
+						}
+					}
+				}
+				random_owned_controlled_state = {
+					limit = {
+						free_building_slots = {
+							building = industrial_complex
+							size > 1
+							include_locked = yes
+						}
+					}
+					add_extra_state_shared_building_slots = 2
+					add_building_construction = {
+						type = industrial_complex
+						level = 2
+						instant_build = yes
+					}
+				}
+				random_owned_controlled_state = {
+					limit = {
+						free_building_slots = {
+							building = industrial_complex
+							size > 1
+							include_locked = yes
+						}
+					}
+					add_extra_state_shared_building_slots = 2
+					add_building_construction = {
+						type = industrial_complex
+						level = 2
+						instant_build = yes
+					}
+				}				
+			}
+			add_ideas = free_trade
+}
+}
+	focus = {
+		id = ITA_Communism_Roads
+		icon =  GFX_goal_generic_construct_infrastructure
+		#mutually_exclusive = { focus = }
+		prerequisite = { focus =   ITA_Failure_Africa   }
+		relative_position_id =   ITA_Failure_Africa
+		x =  2
+		y =  1
+	    
+	
+		cost = 10
+		ai_will_do = {
+			factor = 1
+		}
+
+		available_if_capitulated = yes
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+
+		completion_reward = {
+			2 = {
+				if = {
+					limit = { is_controlled_by = ROOT }
+					add_building_construction = {
+						type = infrastructure
+						level = 2
+						instant_build = yes
+					}
+				}
+			}
+			117 = {
+				if = {
+					limit = { is_controlled_by = ROOT }
+					add_building_construction = {
+						type = infrastructure
+						level = 2
+						instant_build = yes
+					}
+				}
+			}
+			156 = {
+				if = {
+					limit = { is_controlled_by = ROOT }
+					add_building_construction = {
+						type = infrastructure
+						level = 2
+						instant_build = yes
+					}
+				}
+			}
+			157 = {
+				if = {
+					limit = { is_controlled_by = ROOT }
+					add_building_construction = {
+						type = infrastructure
+						level = 2
+						instant_build = yes
+					}
+				}
+			}
+		}
+	}
+			
+		
+		focus = {
+		id = ITA_March_Rome
+		icon = GFX_focus_YUG_pan_slavic_congress
+		#mutually_exclusive = { focus = }
+		prerequisite =  { focus = ITA_Communism_Industry }
+		prerequisite = { focus = ITA_Communism_Influnce }
+		relative_position_id =  ITA_Communism_Influnce
+		x =  -1
+		y =  1
+	    
+	
+		cost = 10
+		ai_will_do = {
+			factor = 1
+		}
+
+		available_if_capitulated = yes
+		search_filters = { FOCUS_FILTER_POLITICAL }
+
+		completion_reward = {
+			ITA = {country_event = italy.17 } 
+		}
+		}
+
+		focus = {
+		id = ITA_Follow_Moscow
+		icon =  GFX_focus_chi_mission_to_the_soviet_union
+		mutually_exclusive = { focus = ITA_Our_Own_Way }
+		prerequisite = { focus =   ITA_March_Rome   }
+		relative_position_id = ITA_March_Rome   
+		x = -4
+		y =  1
+	    
+	
+		cost = 5
+		ai_will_do = {
+			factor = 1
+		}
+
+		available_if_capitulated = yes
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+
+		completion_reward = {SOV = {
+				country_event = { id = generic.2 }}
+		}
+	}
+	focus = {
+		id = ITA_Our_Own_Way
+		icon =  GFX_focus_generic_soviet_politics
+		mutually_exclusive = { focus = ITA_Follow_Moscow }
+		prerequisite = { focus =   ITA_March_Rome   }
+		relative_position_id = ITA_March_Rome   
+		x = 4
+		y =  1
+	    
+	
+		cost = 10
+		ai_will_do = {
+			factor = 1
+		}
+
+		available_if_capitulated = yes
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+
+		completion_reward = { set_rule = { can_create_factions = yes }
+		create_faction = "Latin Commune"
+		if = {
+				limit = {
+					YUG = { 
+						is_ai = yes
+						is_subject = no
+						is_in_faction = no
+					}					
+				}
+				add_to_faction = YUG
+				YUG = {
+					add_ai_strategy = {
+						type = alliance
+						id = "ITA"
+						value = 200
+					}
+				}
+		}
+}
+	}
+	focus = {
+		id = ITA_Socailist_Science
+		icon =  GFX_focus_generic_socialist_science
+		#mutually_exclusive = { focus = }
+		prerequisite = { focus =  ITA_Follow_Moscow }
+		relative_position_id = ITA_Follow_Moscow
+		x = -1
+		y =  1
+	    
+		available = {
+			is_in_faction_with = SOV
+		}
+	
+		cost = 10
+		ai_will_do = {
+			factor = 1
+		}
+
+		available_if_capitulated = yes
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+
+		completion_reward = { add_to_tech_sharing_group = socialist_science_pool
+			every_other_country = {
+				limit = {
+					is_in_faction_with = SOV
+				}
+				add_to_tech_sharing_group = socialist_science_pool }
+}
+	}
+	focus = {
+		id = ITA_Soviet_Backed_Military
+		icon =  GFX_goal_generic_soviet_construction
+		prerequisite = { focus = ITA_Follow_Moscow }
+		x = 1
+		y = 1
+		relative_position_id = ITA_Follow_Moscow
+		cost = 10
+		ai_will_do = {
+			factor = 1
+		}
+
+		available_if_capitulated = yes
+
+		bypass = {
+			custom_trigger_tooltip = {
+				tooltip = production_effort_tt
+				NOT = {
+					any_owned_state = {
+						is_controlled_by = ROOT
+						free_building_slots = {
+							building = arms_factory
+							size > 2
+							include_locked = yes
+						}
+					}
+				}
+			}
+		}
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+
+		completion_reward = {
+			random_owned_controlled_state = {
+				limit = {
+					arms_factory > 0
+					free_building_slots = {
+						building = arms_factory
+						size > 1
+						include_locked = yes
+					}
+					is_on_continent = europe
+				}
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+					type = arms_factory
+					level = 2
+					instant_build = yes
+				}
+			}
+			random_owned_controlled_state = {
+				limit = {
+					arms_factory > 0
+					free_building_slots = {
+						building = arms_factory
+						size > 1
+						include_locked = yes
+					}
+					is_on_continent = europe
+				}
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+					type = arms_factory
+					level = 2
+					instant_build = yes
+				}
+			}
+			if = {
+				limit = {
+					NOT = {
+						any_owned_state = {
+							arms_factory > 0
+							free_building_slots = {
+								building = arms_factory
+								size > 1
+								include_locked = yes
+							}
+							is_on_continent = europe
+						}
+					}					
+				}
+				random_owned_controlled_state = {
+					limit = {
+						arms_factory > 0
+						free_building_slots = {
+							building = arms_factory
+							size > 1
+							include_locked = yes
+						}
+						is_on_continent = europe
+					}
+					add_extra_state_shared_building_slots = 2
+					add_building_construction = {
+						type = arms_factory
+						level = 2
+						instant_build = yes
+					}
+				}
+				random_owned_controlled_state = {
+					limit = {
+						arms_factory > 0
+						free_building_slots = {
+							building = arms_factory
+							size > 1
+							include_locked = yes
+						}
+						is_on_continent = europe
+					}
+					add_extra_state_shared_building_slots = 2
+					add_building_construction = {
+						type = arms_factory
+						level = 2
+						instant_build = yes
+					}
+				}			
+			}
+			if = {
+				limit = {
+					NOT = {
+						any_owned_state = {
+							free_building_slots = {
+								building = arms_factory
+								size > 1
+								include_locked = yes
+							}
+							is_on_continent = europe
+						}
+					}					
+				}
+				random_owned_controlled_state = {
+					limit = {
+						free_building_slots = {
+							building = arms_factory
+							size > 1
+							include_locked = yes
+						}
+					}
+					add_extra_state_shared_building_slots = 2
+					add_building_construction = {
+						type = arms_factory
+						level = 2
+						instant_build = yes
+					}
+				}
+				random_owned_controlled_state = {
+					limit = {
+						free_building_slots = {
+							building = arms_factory
+							size > 1
+							include_locked = yes
+						}
+					}
+					add_extra_state_shared_building_slots = 2
+					add_building_construction = {
+						type = arms_factory
+						level = 2
+						instant_build = yes
+					
+					}
+				}			
+			}
+		}
+    }
+		focus = {
+		id = ITA_Protect_Albana
+		icon =  GFX_focus_ger_great_red_menace
+		#mutually_exclusive = { focus =  }
+		prerequisite = { focus = ITA_Soviet_Backed_Military focus = ITA_Socailist_Science }
+		relative_position_id = ITA_Soviet_Backed_Military
+		x = 0
+		y =  1
+	    
+	
+		cost = 10
+		ai_will_do = {
+			factor = 1
+		}
+
+		available_if_capitulated = yes
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+
+		completion_reward = {
+			if = {
+				limit = {
+					ALB = { has_war = no }
+				}
+				ALB = { country_event = { id = italy.3 } }
+			}
+			else = {
+				create_wargoal = {
+					type = take_state_focus
+					target = ALB
+					generator = { 44 }
+				}
+			}
+		}
+		}
+		focus = {
+		id = ITA_Protect_Greece
+		icon = GFX_focus_GRE_bedrock_of_balkan_stability
+		#mutually_exclusive = { focus =  }
+		prerequisite = { focus = ITA_Soviet_Backed_Military focus = ITA_Socailist_Science }
+		relative_position_id =  ITA_Socailist_Science
+		x = 0
+		y =  1
+	    
+	
+		cost = 10
+		ai_will_do = {
+			factor = 1
+		}
+
+		available_if_capitulated = yes
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+
+		completion_reward = {
+			GRE = { country_event = { id = italy.18 } }
+			
+}
+		}
+		focus = {
+		id = ITA_Contain_Swiss_Neutrality 
+		icon = GFX_focus_attack_switzerland
+		#mutually_exclusive = { focus =  }
+		prerequisite = { focus =  ITA_Protect_Albana focus = ITA_Protect_Greece  }
+		relative_position_id =  ITA_Protect_Greece
+		x =  1
+		y =  1
+	    
+	
+		cost = 10
+		ai_will_do = {
+			factor = 1
+		}
+
+		available_if_capitulated = yes
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+
+		completion_reward = {
+			create_wargoal = {
+					type = puppet_wargoal_focus
+					target = SWI
+					generator = { 44 }
+				}
+		}
+		}
+			focus = {
+		id = ITA_Liberate_French_Communists 
+		icon = GFX_focus_attack_france
+		#mutually_exclusive = { focus =  }
+		prerequisite = { focus =  ITA_Contain_Swiss_Neutrality }
+		relative_position_id =  ITA_Contain_Swiss_Neutrality
+		x =  0
+		y =  1
+	    
+	
+		cost = 10
+		ai_will_do = {
+			factor = 1
+		}
+
+		available_if_capitulated = yes
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+
+		completion_reward = {
+			create_wargoal = {
+					type = puppet_wargoal_focus
+					target = FRA
+					generator = { 44 }
+				}
+		}
+		}
+	
+
+		focus = {
+		id = ITA_Dreams_Of_A_Latin_Union
+		icon = GFX_goal_generic_national_unity
+		#mutually_exclusive = { focus =  }
+		prerequisite = { focus =  ITA_Our_Own_Way}
+		relative_position_id =  ITA_Our_Own_Way
+		x =  0
+		y =  1
+	    
+	
+		cost = 10
+		ai_will_do = {
+			factor = 1
+		}
+
+		available_if_capitulated = yes
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+
+		completion_reward = { ROM = {
+				country_event = { id = italy.19 }
+			}
+		}
+}
+		focus = {
+		id = ITA_Coup_Port
+		icon =  GFX_focus_por_estado_novo
+		#mutually_exclusive = { focus =  }
+		prerequisite = { focus = ITA_Dreams_Of_A_Latin_Union }
+		relative_position_id =  ITA_Dreams_Of_A_Latin_Union
+		x =  0
+		y =  1
+	    
+	
+		cost = 10
+		ai_will_do = {
+			factor = 1
+		}
+
+		available_if_capitulated = yes
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+
+		completion_reward = { POR = {
+				country_event = { id = italy.20 }
+		}
+		}
+		}
+
+		focus = {
+		id = ITA_Subject_Port
+		icon = GFX_focus_generic_befriend_portugal
+		available = {POR = {has_government = communism}}
+		#mutually_exclusive = { focus =  }
+		prerequisite = { focus = ITA_Coup_Port }
+		relative_position_id =  ITA_Coup_Port
+		x =  -1
+		y =  1
+	    
+	
+		cost = 10
+		ai_will_do = {
+			factor = 1
+		}
+
+		available_if_capitulated = yes
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+
+		completion_reward = { ITA = { Puppet = POR }
+		
+}
+		}
+		focus = {
+		id = ITA_Subject_ROM
+		icon = GFX_focus_rom_preserve_romania
+		available = {ROM = {has_government = communism}}
+		#mutually_exclusive = { focus =  }
+		prerequisite = { focus = ITA_Coup_Port }
+		relative_position_id =  ITA_Coup_Port
+		x =  1
+		y =  1
+	    
+	
+		cost = 10
+		ai_will_do = {
+			factor = 1
+		}
+
+		available_if_capitulated = yes
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+
+		completion_reward = { ITA = { Puppet = POR }
+}
+		}
+
+		focus = {
+		id = ITA_MED_DOCK
+		icon = GFX_goal_generic_build_navy
+		#mutually_exclusive = { focus =  }
+		prerequisite = { focus =  ITA_Subject_ROM focus = ITA_Subject_Port }
+		relative_position_id = ITA_Subject_Port
+		x =  1
+		y =  1
+	    
+	
+		cost = 10
+		ai_will_do = {
+			factor = 1
+		}
+
+		available_if_capitulated = yes
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+
+		completion_reward = { random_owned_controlled_state = {
+				limit = {
+					dockyard > 0
+					free_building_slots = {
+						building = dockyard
+						size > 1
+						include_locked = yes
+					}
+				}
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+					type = dockyard
+					level = 2
+					instant_build = yes
+				}
+			}
+			random_owned_controlled_state = {
+				limit = {
+					dockyard > 0
+					free_building_slots = {
+						building = dockyard
+						size > 1
+						include_locked = yes
+					}
+				}
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+					type = dockyard
+					level = 2
+					instant_build = yes
+				}
+			}
+
+			if = {
+				limit = {
+					NOT = {
+						any_owned_state = {
+							dockyard > 0
+							free_building_slots = {
+								building = dockyard
+								size > 0
+								include_locked = yes
+							}
+						}
+					}
+				}
+				random_owned_controlled_state = {
+					limit = {
+						free_building_slots = {
+							building = dockyard
+							size > 1
+							include_locked = yes
+						}
+					}
+					add_extra_state_shared_building_slots = 2
+					add_building_construction = {
+						type = dockyard
+						level = 2
+						instant_build = yes
+					}
+				}
+				random_owned_controlled_state = {
+					limit = {
+						free_building_slots = {
+							building = dockyard
+							size > 1
+							include_locked = yes
+						}
+					}
+					add_extra_state_shared_building_slots = 2
+					add_building_construction = {
+						type = dockyard
+						level = 2
+						instant_build = yes
+					}
+				}				
+			}
+}
+		}
+			focus = {
+		id = ITA_Spain_Intervention
+		icon = GFX_focus_focus_fra_intervention_spain
+		#mutually_exclusive = { focus =  }
+		prerequisite = { focus = ITA_MED_DOCK   }
+		relative_position_id = ITA_MED_DOCK
+		x =  0
+		y =  1
+	    
+	
+		cost = 10
+		ai_will_do = {
+			factor = 1
+		}
+		available = { any_country = {
+				original_tag = SPR}
+		}
+		bypass = {
+			
+		}
+		available_if_capitulated = yes
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+
+		completion_reward = { ITA = {create_wargoal = {
+					type = annex_everything
+					target = SPA
+					generator = { 44 }
+				}
+}
+		}
+			}
+			focus = {
+		id = ITA_Latin_Integrate
+		icon = GFX_goal_generic_national_unity
+		available = { owns_state = 41 }
+		#mutually_exclusive = { focus =  }
+		prerequisite = { focus = ITA_Spain_Intervention   }
+		relative_position_id = ITA_Spain_Intervention
+		x =  0
+		y =  1
+	    
+	
+		cost = 10
+		ai_will_do = {
+			factor = 1
+		}
+
+		available_if_capitulated = yes
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+
+		completion_reward = { annex_country = {
+							target = ROM
+						transfer_troops = yes }
+						 annex_country = {
+							target = POR
+						transfer_troops = yes }
+						add_state_core = 82
+						add_state_core = 81
+						add_state_core = 46
+						add_state_core = 77
+						add_state_core = 83
+						add_state_core = 84
+						add_state_core = 76
+						add_state_core = 79
+						add_state_core = 80
+						add_state_core = 78
+						add_state_core = 766
+						add_state_core = 180
+						add_state_core = 181
+						add_state_core = 112
+						add_state_core = 795
+						add_state_core = 179
+						add_state_core = 171
+						add_state_core = 790
+						add_state_core = 174
+						add_state_core = 791
+						add_state_core = 176
+						add_state_core = 792
+						add_state_core = 172
+						add_state_core = 166
+						add_state_core = 794
+						add_state_core = 165
+						add_state_core = 788
+						add_state_core = 170
+						add_state_core = 169
+						add_state_core = 789
+						add_state_core = 173
+						add_state_core = 175
+						add_state_core = 41
+						add_state_core = 793
+						add_state_core = 168
+						add_state_core = 167
+						add_state_core = 177
+
+						set_cosmetic_tag = LAU_ITA
+
+		}
+			}
+			focus = {
+			id = ITA_Latin_France
+		icon = GFX_focus_focus_fra_border
+		cost = 10
+		#mutually_exclusive = { focus =   }
+		prerequisite = { focus = ITA_Latin_Integrate   }
+		relative_position_id = ITA_Latin_Integrate
+		x =  0
+		y =  1
+	    
+	
+		
+		ai_will_do = {
+			factor = 1
+		}
+
+		available_if_capitulated = yes
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+
+		completion_reward = { ITA = {Create_wargoal = {
+			type = annex_everything
+			target = FRA
+			generator = {44} }
+		}
+		
+
+
+			add_state_core = 735
+			add_state_core = 21
+			add_state_core = 32
+			add_state_core = 20
+			add_state_core = 22
+			add_state_core = 26
+			add_state_core = 25
+			add_state_core = 806
+			add_state_core = 31
+			add_state_core = 19
+			add_state_core = 23
+			add_state_core = 33
+			add_state_core = 27
+			add_state_core = 17
+			add_state_core = 28
+			add_state_core = 18
+			add_state_core = 16
+			add_state_core = 15
+			add_state_core = 29
+			add_state_core = 785
+			add_state_core = 30
+			add_state_core = 14
+			add_state_core = 24
+			add_state_core = 1
+
+
+		}
+}
+			focus = {
+			id = ITA_Open_Politics
+		icon = GFX_goal_generic_national_unity
+		#mutually_exclusive = { focus =   }
+		prerequisite = { focus = ITA_Rome_Form   }
+		relative_position_id = ITA_Rome_Form
+		x =  0
+		y =  1
+	    
+	
+		cost = 5
+		ai_will_do = {
+			factor = 1
+		}
+
+		available_if_capitulated = yes
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+
+		completion_reward = {
+			add_political_power = 150
+		}
+			}
+
+
+			focus = {
+			id = ITA_Third_Republic
+		icon = GFX_goal_support_democracy
+		mutually_exclusive = { focus = ITA_Stick_With_Fascism  }
+		prerequisite = { focus = ITA_Open_Politics }
+		relative_position_id = ITA_Open_Politics
+		x =  -4
+		y =  1
+	    
+	
+		cost = 10
+		ai_will_do = {
+			factor = 1
+		}
+
+		available_if_capitulated = yes
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+
+		completion_reward = {
+			add_popularity = {
+						ideology = fascism
+						popularity = -0.25 }
+						
+			add_popularity = {
+						ideology = democratic
+						popularity = 0.33 }
+		}
+		}
+
+			focus = {
+			id = ITA_Stick_With_Fascism
+		icon = GFX_focus_ger_reichskommisariats
+	    mutually_exclusive = { focus = ITA_Third_Republic   }
+		prerequisite = { focus = ITA_Open_Politics }
+		relative_position_id = ITA_Open_Politics
+		x =  4
+		y =  1
+	    
+	
+		cost = 5
+		ai_will_do = {
+			factor = 1
+		}
+
+		available_if_capitulated = yes
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+
+		completion_reward = { 
+			add_popularity = {
+						ideology =  fascism
+						popularity = 0.05 }
+		}
+}
+			focus = {
+			id = ITA_democratic_ref
+		icon = GFX_goal_generic_propaganda
+		#mutually_exclusive = { focus = }
+		prerequisite = { focus = ITA_Third_Republic  }
+		relative_position_id = ITA_Third_Republic
+		x =  0
+		y =  1
+	    
+	
+		cost = 5
+		ai_will_do = {
+			factor = 1
+		}
+
+		available_if_capitulated = yes
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+
+		completion_reward = { ITA = {
+				country_event = { id = italy.21 }
+				set_cosmetic_tag = SPQR_UNIFIED_democratic
+
+		}
+		}
+			}
+			focus = {
+			id = ITA_Roman_Economy
+		icon = GFX_goal_generic_construct_civ_factory
+		#mutually_exclusive = { focus = }
+		prerequisite = { focus =  ITA_democratic_ref  }
+		relative_position_id =  ITA_democratic_ref
+		x =  -1
+		y =  1
+	    
+	
+		cost = 10
+		ai_will_do = {
+			factor = 1
+		}
+
+		available_if_capitulated = yes
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+
+		completion_reward = {
+			random_owned_controlled_state = {
+				limit = {
+					free_building_slots = {
+						building = industrial_complex
+						size > 2
+						include_locked = yes
+					}
+					is_on_continent = europe
+				}
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+					type = industrial_complex
+					level = 3
+					instant_build = yes
+				}
+			}
+			random_owned_controlled_state = {
+				limit = {
+					free_building_slots = {
+						building = industrial_complex
+						size > 1
+						include_locked = yes
+					}
+					is_on_continent = europe
+				}
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+					type = industrial_complex
+					level = 3
+					instant_build = yes
+				}
+			}
+			if = {
+				limit = {
+					NOT = {
+						any_owned_state = {
+							free_building_slots = {
+								building = industrial_complex
+								size > 1
+								include_locked = yes
+							}
+							is_on_continent = europe
+						}
+					}
+				}
+				random_owned_controlled_state = {
+					limit = {
+						free_building_slots = {
+							building = industrial_complex
+							size > 2
+							include_locked = yes
+						}
+					}
+					add_extra_state_shared_building_slots = 2
+					add_building_construction = {
+						type = industrial_complex
+						level = 3
+						instant_build = yes
+					}
+				}
+				random_owned_controlled_state = {
+					limit = {
+						free_building_slots = {
+							building = industrial_complex
+							size > 1
+							include_locked = yes
+						}
+					}
+					add_extra_state_shared_building_slots = 2
+					add_building_construction = {
+						type = industrial_complex
+						level = 3
+						instant_build = yes
+					}
+				}				
+			}
+		}
+			}
+		focus = {
+			id = ITA_All_Roads_Lead_to_Rome
+		icon =  GFX_goal_generic_construct_infrastructure
+		#mutually_exclusive = { focus = }
+		prerequisite = { focus =  ITA_democratic_ref  }
+		relative_position_id =  ITA_democratic_ref
+		x =  1
+		y =  1
+	    
+	
+		cost = 10
+		ai_will_do = {
+			factor = 1
+		}
+
+		available_if_capitulated = yes
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+
+		completion_reward = {  
+			2 = {
+				if = {
+					limit = { is_controlled_by = ROOT }
+					add_building_construction = {
+						type = infrastructure
+						level = 2
+						instant_build = yes
+					}
+				}
+			}
+			117 = {
+				if = {
+					limit = { is_controlled_by = ROOT }
+					add_building_construction = {
+						type = infrastructure
+						level = 2
+						instant_build = yes
+					}
+				}
+			}
+			156 = {
+				if = {
+					limit = { is_controlled_by = ROOT }
+					add_building_construction = {
+						type = infrastructure
+						level = 2
+						instant_build = yes
+					}
+				}
+			}
+			157 = {
+				if = {
+					limit = { is_controlled_by = ROOT }
+					add_building_construction = {
+						type = infrastructure
+						level = 2
+						instant_build = yes
+					}
+				}
+			}
+		}
+		
+		}
+		focus = {
+			id = ITA_Proclaim_The_beacon_Of_Liberty
+		icon = GFX_goal_support_democracy
+		#mutually_exclusive = { focus = }
+		prerequisite = { focus = ITA_All_Roads_Lead_to_Rome }
+		prerequisite = { focus = ITA_Roman_Economy }
+		relative_position_id =  ITA_All_Roads_Lead_to_Rome 
+		x =  -1
+		y =  1
+	    
+	
+		cost = 10
+		ai_will_do = {
+			factor = 1
+		}
+
+		available_if_capitulated = yes
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+
+		completion_reward = {  add_stability = 0.2
+}
+}
+	  focus = {
+			id = ITA_Attack_France
+		icon = GFX_focus_attack_france
+		#mutually_exclusive = { focus = }
+		prerequisite = { focus = ITA_Stick_With_Fascism }
+		relative_position_id =  ITA_Stick_With_Fascism
+		x =  -1
+		y =  1
+	    
+	
+		cost = 10
+		ai_will_do = {
+			factor = 1
+		}
+
+		available_if_capitulated = yes
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+
+		completion_reward = { ITA = {Create_wargoal = {
+			type = annex_everything
+			target = FRA
+			generator = {44} }
+		}
+		
+
+
+			add_state_core = 735
+			add_state_core = 21
+			add_state_core = 32
+			add_state_core = 20
+			add_state_core = 22
+			add_state_core = 26
+			add_state_core = 25
+			add_state_core = 806
+			add_state_core = 31
+			add_state_core = 19
+			add_state_core = 23
+			add_state_core = 33
+			add_state_core = 27
+			add_state_core = 17
+			add_state_core = 28
+			add_state_core = 18
+			add_state_core = 16
+			add_state_core = 15
+			add_state_core = 29
+			add_state_core = 785
+			add_state_core = 30
+			add_state_core = 14
+			add_state_core = 24
+			add_state_core = 1
+
+
+		}
+}
+		focus = {
+			id = ITA_Core_Iberia
+		icon = GFX_goal_generic_major_war
+		#mutually_exclusive = { focus = }
+		prerequisite = { focus = ITA_Stick_With_Fascism }
+		relative_position_id =  ITA_Stick_With_Fascism
+		x =  1
+		y =  1
+	    
+	
+		cost = 10
+		ai_will_do = {
+			factor = 1
+		}
+
+		available_if_capitulated = yes
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+
+		completion_reward = {
+						add_state_core = 180
+						add_state_core = 181
+						add_state_core = 112
+						add_state_core = 795
+						add_state_core = 179
+						add_state_core = 171
+						add_state_core = 790
+						add_state_core = 174
+						add_state_core = 791
+						add_state_core = 176
+						add_state_core = 792
+						add_state_core = 172
+						add_state_core = 166
+						add_state_core = 794
+						add_state_core = 165
+						add_state_core = 788
+						add_state_core = 170
+						add_state_core = 169
+						add_state_core = 789
+						add_state_core = 173
+						add_state_core = 175
+						add_state_core = 41
+						add_state_core = 793
+						add_state_core = 168
+						add_state_core = 167
+						add_state_core = 177
+
+}
+		}
+
+		focus = {
+		id = ITA_Proclaim_3rd_Rome
+		icon = GFX_focus_generic_italy_first
+		#mutually_exclusive = { focus = }
+		prerequisite = { focus = ITA_Core_Iberia }
+		prerequisite = { focus = ITA_Attack_France }
+		relative_position_id =  ITA_Core_Iberia
+		x =  -1
+		y =  1
+	    
+	
+		cost = 10
+		ai_will_do = {
+			factor = 1
+		}
+
+		available_if_capitulated = yes
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+
+		completion_reward = {
+		add_stability = 0.2
+}
+		}
+	
+					
+					
+
+
+
+	
