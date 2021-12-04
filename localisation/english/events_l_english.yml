@@ -3279,7 +3279,21 @@
  hungary.8.t:0 "Axis Powers Occupy Contested Lands"
  hungary.8.d:0 "After our new union with Yugoslavia, Axis forces of Bulgaria and Italy marched into their claimed lands and took them as rightful lands for their nations"
  hungary.8.a:0 "So be it"
-
-
- 
-
+ mongolia.1.t:0 "Mongolia Requests Protection of Tannu Tuva"
+ mongolia.1.d:0 "Today ambassadors from Mongolia came to moscow asking for protection over the lands of Tannu Tuva"
+ mongolia.1.a:0 "We must accept"
+ mongolia.1.b:0 "Not right now"
+ mongolia.2.t:0 "Moscow Accepts"
+ mongolia.2.d:0 "Moscow Accepts the pact"
+ mongolia.2.a:0 "Horray!"
+ mongolia.3.t:0 "Moscow Denys"
+ mongolia.3.d:0 "Moscow Denys the pact"
+ mongolia.3.a:0 ":("
+ mongolia.4.t:0 "Mongolia Asks for Dominionship"
+ mongolia.4.d:0 "Mongolian ambassadors entered moscow this morning asking for dominionship in order for protection"
+ mongolia.4.a:0 "Of Course!"
+ mongolia.4.b:0 "Of Course Not"
+ mongolia.5.t:0 "The Trans Siberian Offer"
+ mongolia.5.d:0 "The Mongolians have given us a intresting offer give them control of Siberia in order for reduced autonomy"
+ mongolia.5.a:0 "Yes"
+ mongolia.5.b:0 "No"

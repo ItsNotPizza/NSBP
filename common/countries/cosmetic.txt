@@ -804,3 +804,11 @@ LAU_ITA = {
 	color = rgb { 17 8 61 }
 	color_ui = rgb { 128 0 128 }
 }
+DOM_MON = {
+	color = rgb { 207 19 34 }
+	color_ui = rgb { 207 19 34 }
+}
+DOM_SIB = {
+	color = rgb { 207 19 34 }
+	color_ui = rgb { 207 19 34 }
+}
