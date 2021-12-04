@@ -68,7 +68,7 @@ focus_tree = {
 		id = HUN_balanced_budget
 		icon = GFX_goal_generic_consumer_goods
 		mutually_exclusive = { focus = HUN_economic_intervention }
-		x = 5
+		x = 0
 		y = 0
 
 		cost = 10
@@ -1207,7 +1207,7 @@ focus_tree = {
 		id = HUN_economic_intervention
 		icon = GFX_goal_generic_demand_territory
 		mutually_exclusive = { focus = HUN_balanced_budget }
-		x = 15
+		x = 10
 		y = 0
 
 		cost = 10
@@ -2484,7 +2484,7 @@ focus_tree = {
 		icon = GFX_goal_generic_national_unity
 		prerequisite = { focus = HUN_assassinate_horthy }
 		mutually_exclusive = { focus = HUN_join_comintern }
-		x = 2
+		x = 4
 		y = 1
 		relative_position_id = HUN_assassinate_horthy
 
@@ -2509,7 +2509,7 @@ focus_tree = {
 
 		completion_reward = {
 			set_rule = { can_create_factions = yes } 
-			create_faction = HUN_FACTION_COMMIE
+			create_faction = "Union of Balkan Soviets"
 		}
 	}
 
@@ -5008,4 +5008,228 @@ focus_tree = {
 
 		}
 	}
+
+	focus = {
+		id = HUN_Influnce_The_Balkans
+		icon = GFX_focus_BUL_free_balkan_states
+		prerequisite = { focus = HUN_the_revolutionary_council  }
+		x = 0
+		y = 1
+		relative_position_id = HUN_the_revolutionary_council
+
+		cost = 10
+
+		ai_will_do = {
+			factor = 50
+		}
+
+		available = {
+		}
+
+		bypass = {
+
+		}
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		completion_reward = {
+			YUG = { add_ideas = communist_influence }
+			ROM = { add_ideas = communist_influence }
+			GRE = { add_ideas = communist_influence}
+			BUL = { add_ideas = communist_influence}
+		}
+	}
+
+	focus = {
+		id = HUN_Miltary_Action_In_YUG
+		icon =  GFX_goal_generic_war_with_comintern
+		prerequisite = { focus =  HUN_Influnce_The_Balkans  }
+		x = -1
+		y = 1
+		relative_position_id =  HUN_Influnce_The_Balkans
+		cost = 10
+
+		ai_will_do = {
+			factor = 50
+		}
+
+		available = {
+		}
+
+		bypass = {
+
+		}
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		completion_reward = {
+			YUG = {add_popularity = {
+						ideology = communism
+						popularity = 0.30 }}
+						add_equipment_to_stockpile = {
+
+        type = infantry_equipment_1
+
+        amount = -2500
+		  }
+		}
+}	
+	focus = {
+		id = HUN_Miltary_Action_In_ROM
+		icon =  GFX_goal_generic_war_with_comintern
+		prerequisite = { focus =  HUN_Influnce_The_Balkans  }
+		x = 1
+		y = 1
+		relative_position_id =  HUN_Influnce_The_Balkans
+		cost = 10
+
+		ai_will_do = {
+			factor = 50
+		}
+
+		available = { 
+		}
+
+		bypass = {
+
+		}
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		completion_reward = { ROM = {add_popularity = {
+						ideology = communism
+						popularity = 0.30 }}
+						add_equipment_to_stockpile = {
+
+        type = infantry_equipment_1
+
+        amount = -2500
+		  }
+		}
+	}
+
+	focus = {
+		id = HUN_Press_The_Yug_Claim
+		icon =  GFX_focus_invite_yugoslavia
+		prerequisite = { focus = HUN_Miltary_Action_In_ROM }
+		prerequisite = { focus = HUN_Miltary_Action_In_YUG}
+		x = 0
+		y = 2
+		relative_position_id =  HUN_Influnce_The_Balkans
+		cost = 10
+
+		ai_will_do = {
+			factor = 50
+		}
+
+		available = { 
+		}
+
+		bypass = {
+
+		}
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		completion_reward = { YUG = {
+				country_event = { id = hungary.7 }
 }
+		}
+	}
+
+	focus = {
+		id = HUN_YUG_Union
+		icon =  GFX_goal_generic_alliance
+		prerequisite = { focus = HUN_Press_The_Yug_Claim }
+		x = 0
+		y = 1
+		relative_position_id = HUN_Press_The_Yug_Claim
+		cost = 10
+
+		ai_will_do = {
+			factor = 50
+		}
+
+		available = { YUG = {is_puppet_of = HUN}
+		}
+
+		bypass = {
+
+		}
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		completion_reward = {
+			annex_country = {
+							target = YUG
+						transfer_troops = yes }
+						add_state_core = 102
+						add_state_core = 103
+						add_state_core = 109
+						add_state_core = 104
+						add_state_core = 804
+						add_state_core = 105
+						add_state_core = 45
+						add_state_core = 764
+						add_state_core = 107
+						add_state_core = 108
+						add_state_core = 802
+						add_state_core = 803
+						add_state_core = 106
+						hidden_effect = {HUN = {
+				country_event = { id = hungary.8 }
+				}}
+				set_cosmetic_tag = YUG_HUN
+		}
+	}
+
+	focus = {
+		id = HUN_Reclaim_Lost
+		icon =  GFX_focus_attack_italy
+		prerequisite = { focus = HUN_YUG_Union  }
+		x = 0
+		y = 1
+		relative_position_id = HUN_YUG_Union
+		cost = 10
+
+		ai_will_do = {
+			factor = 50
+		}
+
+		available = { }
+		
+
+		bypass = {
+
+		}
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		completion_reward =  { HUN = {Create_wargoal = {
+			type = annex_everything
+			target = ITA 
+			generator = {44} }
+		}
+			
+			 HUN = {Create_wargoal = {
+			type = annex_everything
+			target = BUL
+			generator = {44} }
+			}
+		}
+}
+	}
+}
+

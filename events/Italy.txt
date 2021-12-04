@@ -715,6 +715,7 @@ country_event = {
 	id = italy.21
 	title = italy.21.t 
 	desc = italy.21.d 
+	is_triggered_only = yes 
 
 	picture = GFX_report_event_worker_protests
 
@@ -728,10 +729,3 @@ country_event = {
 						popularity = 0.05 }
 	}
 }		
-
-
-	
-
-	
-}
-

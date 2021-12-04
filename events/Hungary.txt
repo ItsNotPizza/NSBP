@@ -112,3 +112,56 @@ country_event = {
 		HUN = { transfer_state = 45 }
 	}
 }
+
+# Hungary Coup Yugoslavia Event 
+country_event = {
+	id = hungary.7
+	title = hungary.7.t 
+	desc = hungary.7.d 
+	picture = GFX_report_event_worker_protests 
+
+	is_triggered_only = yes 
+
+	option = {
+		name = hungary.7.a 
+		ai_chance = { factor = 70 }
+		set_politics = {
+			ruling_party = communism
+			elections_allowed = no }
+			add_popularity = {
+						ideology = communism
+						popularity = 0.05 }
+			HUN = {Puppet = YUG}
+	}
+
+	option = {
+		name = hungary.7.b 
+		ai_chance = { factor = 30 }
+		HUN = {create_wargoal = {
+					type = puppet_wargoal_focus
+					target = YUG
+					generator = { 44 }
+				}
+	}
+}
+}
+
+# Hungary Axis Powers Occupy Contested land 
+country_event = {
+	id = hungary.8 
+	title = hungary.8.t 
+	desc = hungary.8.d 
+	picture = GFX_report_event_worker_protests 
+
+	is_triggered_only = yes 
+
+	option = {
+		name = hungary.8.a 
+		BUL = {transfer_state = 803 }
+		BUL = {transfer_state = 106}
+		ITA = {transfer_state = 103}
+		ITA = {transfer_state = 105}
+		ITA = { transfer_state = 102}
+		ITA = { transfer_state = 804}
+}
+}
