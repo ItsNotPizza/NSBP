@@ -88,7 +88,7 @@ country_event = {
 				autonomy_state = autonomy_dominion}}
 
 
-				set_cosmetic_tag = DOM_MON 
+	MON = {set_cosmetic_tag = DOM_MON }
                 
                  country_event = { id = mongolia.2 }
 
@@ -189,6 +189,8 @@ country_event = {
     id = mongolia.6
     title = mongolia.6.t 
     desc = mongolia.6.d 
+    is_triggered_only = yes 
+
 
     picture = GFX_report_event_generic_sign_treaty1
 
@@ -199,3 +201,110 @@ country_event = {
     }
 
 }
+
+
+
+# Offer to Japan 
+
+country_event = {
+    id = mongolia.7
+    title = mongolia.7.t 
+    desc = mongolia.7.d 
+    is_triggered_only = yes 
+
+
+    picture = GFX_report_event_generic_sign_treaty1
+
+
+    option = {
+      name = mongolia.7.a 
+       ai_chance = { factor = 90 }
+       MON = {annex_country = {
+							target = MEN
+						transfer_troops = yes }
+                        add_state_core = 612
+                        add_state_core = 611 
+                        transfer_state = 761
+                        add_state_core = 761 }
+    
+        JAP = { Puppet = MON }
+       hidden_effect = {  MON = {country_event = mongolia.9 }}}
+
+    
+
+
+    option = {
+        name = mongolia.7.b 
+         ai_chance = { factor = 10 }
+        add_political_power = -15
+
+        hidden_effect = { MON = {country_event = mongolia.8}}}
+    
+}
+
+
+# Japan Refuses 
+
+
+    country_event = {
+	id = mongolia.8
+	title = mongolia.8.t 
+	desc = mongolia.8.d 
+	is_triggered_only = yes 
+
+	picture = GFX_report_event_generic_sign_treaty1
+
+	option = {
+    name = mongolia.8.a 
+    }
+    }
+
+
+# Japan Agrees 
+
+
+    country_event = {
+	id = mongolia.9
+	title = mongolia.9.t 
+	desc = mongolia.9.d 
+	is_triggered_only = yes 
+
+	picture = GFX_report_event_generic_sign_treaty1
+
+	option = {
+    name = mongolia.9.a 
+    }
+    }
+
+
+# Appeal For Autonomy 
+
+
+    country_event = {
+    id = mongolia.10
+    title = mongolia.10.t 
+    desc = mongolia.10.d 
+    is_triggered_only = yes 
+
+    
+    picture = GFX_report_event_generic_sign_treaty1
+
+    option = { 
+    name = mongolia.10.a 
+     ai_chance = { factor = 90 }
+    MON = {
+    add_autonomy_ratio = {
+				value = 1.0}
+    add_political_power = 150
+    }
+    hidden_effect = { MON = {country_event = mongolia.9}}}
+    
+
+    option = {
+    name = mongolia.10.b 
+     ai_chance = { factor = 10 }
+    add_political_power = -20
+    hidden_effect = { MON = {country_event = mongolia.8}}}
+    }
+
+    

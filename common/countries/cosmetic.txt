@@ -812,3 +812,7 @@ DOM_SIB = {
 	color = rgb { 207 19 34 }
 	color_ui = rgb { 207 19 34 }
 }
+JAP_MON = {
+	color = rgb { 204 99 12 }
+	color_ui = rgb { 204 99 12 }
+}

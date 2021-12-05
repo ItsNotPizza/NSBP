@@ -306,7 +306,7 @@ focus_tree = {
 
 		focus = {
 		id = MON_TRANS_SIBERIAN_OFFER
-		icon = GFX_focus_CZE_german_puppet
+		icon = GFX_focus_SOV_reinforce_eastern_naval_bases
         relative_position_id = MON_Increase_Loyalty_To_Moscow
         prerequisite = { focus =  MON_Increase_Loyalty_To_Moscow  } 
 		available = {
@@ -325,4 +325,346 @@ focus_tree = {
 
 		completion_reward = {
 			SOV = {country_event = mongolia.5}
+		}
 }
+
+		focus = {
+		id = MON_CONNECT_SIBERIA
+		icon = GFX_goal_generic_construct_infrastructure
+        relative_position_id = MON_TRANS_SIBERIAN_OFFER
+        prerequisite = { focus = MON_TRANS_SIBERIAN_OFFER   } 
+		
+       
+
+
+        
+		x = -1
+		y = 1
+		cost = 5
+		search_filters = {  FOCUS_FILTER_RESEARCH }
+		
+		available_if_capitulated = yes
+
+		completion_reward = { 
+			566 = {
+				if = {
+					limit = { is_controlled_by = ROOT }
+					add_building_construction = {
+						type = infrastructure
+						level = 2
+						instant_build = yes
+					}
+				}
+			}
+			565 = {
+				if = {
+					limit = { is_controlled_by = ROOT }
+					add_building_construction = {
+						type = infrastructure
+						level = 2
+						instant_build = yes
+					}
+				}
+			}
+			330 = {
+				if = {
+					limit = { is_controlled_by = ROOT }
+					add_building_construction = {
+						type = infrastructure
+						level = 2
+						instant_build = yes
+					}
+				}
+			}
+			329 = {
+				if = {
+					limit = { is_controlled_by = ROOT }
+					add_building_construction = {
+						type = infrastructure
+						level = 2
+						instant_build = yes
+					}
+				}
+			}
+		}
+}
+
+		focus = {
+		id = MON_RETAKE_VLA
+		icon = GFX_goal_generic_major_war
+        relative_position_id = MON_TRANS_SIBERIAN_OFFER
+        prerequisite = { focus = MON_TRANS_SIBERIAN_OFFER  } 
+		
+		
+       
+
+
+        
+		x = 1
+		y = 1
+		cost = 10
+		search_filters = {  FOCUS_FILTER_RESEARCH }
+		
+		available_if_capitulated = yes
+
+		completion_reward = {
+			create_wargoal = {
+					type = take_state_focus
+					target = VLA
+					generator = { 44 }
+				}
+			add_state_core = 409
+			add_state_core = 408
+		} 
+}
+
+	focus = {
+		id = MON_VLA_CAP
+		icon = GFX_goal_generic_propaganda
+        relative_position_id = MON_RETAKE_VLA
+        prerequisite = { focus = MON_RETAKE_VLA } 
+		prerequisite = { focus = MON_CONNECT_SIBERIA } 
+		
+		available = {
+			owns_state = 408
+		}
+       
+
+
+        
+		x = -1
+		y = 1
+		cost = 10
+		search_filters = {  FOCUS_FILTER_RESEARCH }
+		
+		available_if_capitulated = yes
+
+		completion_reward = { set_capital = { state = 408 } }
+	}
+
+	
+	focus = {
+		id = MON_Japan_Fascist
+		icon = GFX_focus_jap_manchurian_project
+        relative_position_id = MON_Fascist_Path 
+        prerequisite = { focus = MON_Fascist_Path }  
+		mutually_exclusive = { 
+			focus = MON_Off_Fascist
+		}
+		
+		
+
+
+        
+		x = -3
+		y = 1
+		cost = 10
+		search_filters = {  FOCUS_FILTER_RESEARCH }
+		
+		available_if_capitulated = yes
+
+		completion_reward = {
+}
+	}
+
+
+	focus = {
+		id = MON_Off_Fascist
+		icon = GFX_goal_generic_demand_territory
+        relative_position_id = MON_Fascist_Path 
+        prerequisite = { focus = MON_Fascist_Path } 
+		mutually_exclusive = { 
+			focus = MON_Japan_Fascist}
+
+		
+		
+
+
+        
+		x = 3
+		y = 1
+		cost = 10
+		search_filters = {  FOCUS_FILTER_RESEARCH }
+		
+		available_if_capitulated = yes
+
+		completion_reward = {
+}
+	}
+
+
+	focus = {
+		id = MON_Offer_To_Japan
+		icon = GFX_goal_generic_intelligence_exchange
+        relative_position_id = MON_Japan_Fascist 
+        prerequisite = { focus = MON_Japan_Fascist  } 
+
+		
+		
+
+
+        
+		x = 0
+		y = 1
+		cost = 10
+		search_filters = {  FOCUS_FILTER_RESEARCH }
+		
+		available_if_capitulated = yes
+
+		completion_reward = {
+			JAP = {country_event = mongolia.7}
+			
+			}
+}
+
+	
+	focus = {
+		id = MON_Embrase_Genghis
+		icon = GFX_goal_generic_demand_territory
+        relative_position_id = MON_Offer_To_Japan
+        prerequisite = { focus = MON_Offer_To_Japan  } 
+
+		
+		
+
+
+        
+		x = -1
+		y = 1
+		cost = 5
+		search_filters = {  FOCUS_FILTER_RESEARCH }
+		
+		available_if_capitulated = yes
+
+		completion_reward = {
+			add_country_leader_trait = spirit_of_genghis
+		}
+}
+
+
+	focus = {
+		id = MON_Embrase_Old_Borders
+		icon = GFX_goal_generic_major_war
+        relative_position_id = MON_Offer_To_Japan
+        prerequisite = { focus = MON_Offer_To_Japan  } 
+
+		
+		
+
+
+        
+		x = 1
+		y = 1
+		cost = 10
+		search_filters = {  FOCUS_FILTER_RESEARCH }
+		
+		available_if_capitulated = yes
+
+		completion_reward = {
+			add_state_core = 563
+			add_state_core = 564
+			add_state_core = 329
+			add_state_core = 566
+			add_state_core = 618
+			add_state_core = 760
+			add_state_core = 756
+			add_state_core = 621
+}
+	}
+
+
+	focus = {
+		id = MON_Appeal_for_Autonomy
+		icon =  GFX_focus_CZE_german_puppet
+        relative_position_id =  MON_Embrase_Old_Borders
+        prerequisite = { focus =  MON_Embrase_Old_Borders } 
+		prerequisite = { focus =  MON_Embrase_Genghis }
+
+		
+		
+
+
+        
+		x = -1
+		y = 1
+		cost = 10
+		search_filters = {  FOCUS_FILTER_RESEARCH }
+		
+		available_if_capitulated = yes
+
+		completion_reward = {
+			JAP = {country_event = mongolia.10}
+}
+	}
+
+
+	focus = {
+		id = MON_EMBRASE_JAP_CULTURE
+		icon =  GFX_focus_jap_pacific_guardian
+        relative_position_id =   MON_Appeal_for_Autonomy
+        prerequisite = { focus =  MON_Appeal_for_Autonomy } 
+		
+		
+
+
+        
+		x = 0
+		y = 1
+		cost = 10
+		search_filters = {  FOCUS_FILTER_RESEARCH }
+		
+		available_if_capitulated = yes
+
+		completion_reward = {
+			set_cosmetic_tag = JAP_MON
+		}
+	}
+
+	focus = {
+		id = MON_FASCIST_INFLUENCE
+		icon =  GFX_focus_jap_pacific_guardian
+        relative_position_id = MON_Off_Fascist 
+        prerequisite = { focus = MON_Off_Fascist   } 
+		
+		
+
+
+        
+		x = -1
+		y = 1
+		cost = 10
+		search_filters = {  FOCUS_FILTER_RESEARCH }
+		
+		available_if_capitulated = yes
+
+		completion_reward = {
+			add_ideas = fascist_influence
+}
+	}
+
+	focus = {
+		id = MON_FASCIST_MIL_GROUPS
+		icon =  GFX_focus_jap_pacific_guardian
+        relative_position_id = MON_Off_Fascist 
+        prerequisite = { focus = MON_Off_Fascist   } 
+		
+		
+
+
+        
+		x = 1
+		y = 1
+		cost = 10
+		search_filters = {  FOCUS_FILTER_RESEARCH }
+		
+		available_if_capitulated = yes
+
+		completion_reward = {
+		add_ideas = fascist_assault_divisions
+}
+	}
+
+
+
+
+		
