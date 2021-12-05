@@ -307,4 +307,23 @@ country_event = {
     hidden_effect = { MON = {country_event = mongolia.8}}}
     }
 
+
+# Fascists declare referendum 
+
+
+    country_event = {
+    id = mongolia.11
+    title = mongolia.11.t 
+    desc = mongolia.11.d 
+    is_triggered_only = yes 
+
+    
+    picture = GFX_report_event_generic_sign_treaty1
+
+    option = { 
+    name = mongolia.11.a 
+    set_politics = {
+			ruling_party = fascism
+			elections_allowed = no}}
+    }
     

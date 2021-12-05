@@ -13,7 +13,7 @@ focus_tree = {
 	
 	default = no
 
-	continuous_focus_position = { x = 50 y = 1100 }
+	continuous_focus_position = { x = 50 y = 1500 }
 
     focus = {
 		id = MON_Poltical_Situation
@@ -464,6 +464,7 @@ focus_tree = {
 		available_if_capitulated = yes
 
 		completion_reward = {
+			add_stability = 0.1
 }
 	}
 
@@ -489,6 +490,8 @@ focus_tree = {
 		available_if_capitulated = yes
 
 		completion_reward = {
+		add_stability = -0.05
+
 }
 	}
 
@@ -622,7 +625,7 @@ focus_tree = {
 
 	focus = {
 		id = MON_FASCIST_INFLUENCE
-		icon =  GFX_focus_jap_pacific_guardian
+		icon =  GFX_focus_ger_reichskommisariats
         relative_position_id = MON_Off_Fascist 
         prerequisite = { focus = MON_Off_Fascist   } 
 		
@@ -644,9 +647,10 @@ focus_tree = {
 
 	focus = {
 		id = MON_FASCIST_MIL_GROUPS
-		icon =  GFX_focus_jap_pacific_guardian
+		icon =  GFX_focus_generic_japanese_imperial_glory
         relative_position_id = MON_Off_Fascist 
         prerequisite = { focus = MON_Off_Fascist   } 
+		
 		
 		
 
@@ -663,6 +667,332 @@ focus_tree = {
 		add_ideas = fascist_assault_divisions
 }
 	}
+
+
+	focus = {
+		id = MON_REF 
+		icon =  GFX_goal_generic_forceful_treaty
+        relative_position_id =  MON_FASCIST_MIL_GROUPS
+        prerequisite = { focus =  MON_FASCIST_MIL_GROUPS  } 
+		prerequisite = { focus = MON_FASCIST_INFLUENCE  } 
+		
+		
+
+
+        
+		x = -1
+		y = 1
+		cost = 10
+		search_filters = {  FOCUS_FILTER_RESEARCH }
+		
+		available_if_capitulated = yes
+
+		completion_reward = {
+		MON = {country_event = mongolia.11}
+}
+	}
+
+
+	focus = {
+		id = MON_Destroy_Communists
+		icon =  GFX_goal_anti_comintern_pact
+        relative_position_id = MON_REF 
+        prerequisite = { focus = MON_REF  } 
+		
+		
+		
+
+
+        
+		x = 0
+		y = 1
+		cost = 10
+		search_filters = {  FOCUS_FILTER_RESEARCH }
+		
+		available_if_capitulated = yes
+
+		completion_reward = { 
+			add_popularity = {
+						ideology = communism
+						popularity = -1.0 }
+			add_stability = -0.25
+}
+	}
+
+
+	focus = {
+		id = MON_JOIN_AXIS
+		icon =  GFX_goal_molotov_ribbentrop_pact
+        relative_position_id = MON_Destroy_Communists
+        prerequisite = { focus = MON_Destroy_Communists   } 
+		
+		
+		
+
+
+        
+		x = 0
+		y = 1
+		cost = 5
+		search_filters = {  FOCUS_FILTER_RESEARCH }
+		
+		available_if_capitulated = yes
+
+		completion_reward = { GER = {
+				country_event = { id = generic.2 }}
+		}
+		}
+
+
+	focus = {
+		id = MON_War_Tannu
+		icon = GFX_goal_generic_major_war
+        relative_position_id = MON_JOIN_AXIS
+        prerequisite = { focus = MON_JOIN_AXIS   } 
+		
+		
+		
+
+
+        
+		x = -1
+		y = 1
+		cost = 10
+		search_filters = {  FOCUS_FILTER_RESEARCH }
+		
+		available_if_capitulated = yes
+
+		completion_reward = {
+			create_wargoal = {
+					type = take_state_focus
+					target = TAN 
+					generator = { 44 }}
+		add_state_core = 329 }
+	}
+
+
+	focus = {
+		id = MON_War_SIK
+		icon =  GFX_goal_generic_major_war
+        relative_position_id = MON_JOIN_AXIS
+        prerequisite = { focus = MON_JOIN_AXIS   } 
+		
+		
+		
+
+
+        
+		x = 1
+		y = 1
+		cost = 10
+		search_filters = {  FOCUS_FILTER_RESEARCH }
+		
+		available_if_capitulated = yes
+
+		completion_reward = {
+			create_wargoal = {
+					type = take_state_focus
+					target = SIK
+					generator = { 44 }}
+		add_state_core = 618
+		add_state_core = 617
+		add_state_core = 287
+		add_state_core = 619
+		add_state_core = 759
+		add_state_core = 760
+		}
+	}
+
+
+	focus = {
+		id = MON_War_XSM
+		icon =  GFX_goal_generic_major_war
+        relative_position_id = MON_War_SIK
+        prerequisite = { focus = MON_War_SIK focus = MON_War_Tannu  } 
+		 
+		
+		
+		
+
+
+        
+		x = 0
+		y = 1
+		cost = 10
+		search_filters = {  FOCUS_FILTER_RESEARCH }
+		
+		available_if_capitulated = yes
+
+		completion_reward = {
+			create_wargoal = {
+					type = take_state_focus
+					target = XSM 
+					generator = { 44 }}
+		add_state_core = 756
+		add_state_core = 755
+		add_state_core = 604
+		add_state_core = 754
+		add_state_core = 283
+		add_state_core = 753
+		add_state_core = 616
+		}
+	}
+
+
+	focus = {
+		id = MON_War_TIB
+		icon =  GFX_goal_generic_major_war
+        relative_position_id = MON_War_SIK
+        prerequisite = { focus = MON_War_SIK focus = MON_War_Tannu  } 
+		 
+		
+		
+		
+
+
+        
+		x = -2
+		y = 1
+		cost = 10
+		search_filters = {  FOCUS_FILTER_RESEARCH }
+		
+		available_if_capitulated = yes
+
+		completion_reward = {
+			create_wargoal = {
+					type = take_state_focus
+					target = TIB
+					generator = { 44 }}
+		add_state_core = 758
+		add_state_core = 322
+		add_state_core = 757
+}
+	}
+
+	focus = {
+		id = MON_DECLARE
+		icon = GFX_goal_generic_propaganda
+        relative_position_id =  MON_War_TIB
+        prerequisite = { focus =  MON_War_TIB    } 
+		prerequisite = { focus = MON_War_XSM }
+		
+		
+		
+
+
+        
+		x = 1
+		y = 1
+		cost = 5
+		search_filters = {  FOCUS_FILTER_RESEARCH }
+		
+		available_if_capitulated = yes
+
+		completion_reward = {
+			set_cosmetic_tag = MON_REI
+		}
+	}
+
+
+	focus = {
+		id = MON_JAP 
+		icon = GFX_focus_AST_war_japan
+        relative_position_id = MON_DECLARE
+        prerequisite = { focus = MON_DECLARE    } 
+		
+		
+		
+
+
+        
+		x = 0
+		y = 1
+		cost = 10
+		search_filters = {  FOCUS_FILTER_RESEARCH }
+		
+		available_if_capitulated = yes
+
+		completion_reward = {
+			create_wargoal = {
+					type = take_state_focus
+					target = MEN
+					generator = { 44 }}
+			create_wargoal = {
+					type = take_state_focus
+					target = JAP
+					generator = { 44 }}
+		add_state_core = 612	
+		add_state_core = 611
+		add_state_core = 761
+		add_state_core = 714
+		}
+	}
+
+
+	focus = {
+		id = MON_SHX 
+		icon = GFX_goal_generic_major_war
+        relative_position_id =  MON_War_SIK
+        prerequisite = { focus =  MON_War_SIK   } 
+		
+		
+		
+		
+
+
+        
+		x = 2
+		y = 1
+		cost = 10
+		search_filters = {  FOCUS_FILTER_RESEARCH }
+		
+		available_if_capitulated = yes
+		completion_reward = { 
+			create_wargoal = {
+					type = take_state_focus
+					target = SHX 
+					generator = { 44 }}
+			add_state_core = 621
+			add_state_core = 746
+			add_state_core = 615
+
+		}
+	}
+
+
+	focus = {
+		id = MON_PRC 
+		icon = GFX_goal_generic_major_war
+        relative_position_id = MON_SHX  
+        prerequisite = { focus =  MON_SHX    } 
+		
+		
+		
+		
+
+
+        
+		x = 0
+		y = 1
+		cost = 10
+		search_filters = {  FOCUS_FILTER_RESEARCH }
+		
+		available_if_capitulated = yes
+		completion_reward = { 
+		create_wargoal = {
+					type = take_state_focus
+					target = PRC 
+					generator = { 44 }}
+			add_state_core = 622
+		}
+	}
+}
+				
+
+				
+		
+			
+
 
 
 
