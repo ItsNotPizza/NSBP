@@ -364,7 +364,11 @@ country_event = {
     option = { 
     name = mongolia.13.a
     ai_chance = { factor = 80 }
-    MON = {puppet = SIK}}
+    MON = {puppet = SIK}
+    white_peace = JAP }
+
+
+    
     
     option = {
     name = mongolia.13.b 
@@ -396,7 +400,8 @@ country_event = {
     option = { 
     name = mongolia.13.a
     ai_chance = { factor = 80 }
-    MON = {puppet = XSM}}
+    MON = {puppet = XSM}
+    white_peace = JAP }
     
     option = {
     name = mongolia.13.b 
@@ -427,7 +432,8 @@ country_event = {
     option = { 
     name = mongolia.13.a
     ai_chance = { factor = 80}
-    MON = {puppet = SHX}}
+    MON = {puppet = SHX}
+    white_peace = JAP}
     
     option = {
     name = mongolia.13.b 
@@ -458,7 +464,8 @@ country_event = {
     option = { 
     name = mongolia.13.a
     ai_chance = { factor = 60 }
-    MON = {puppet = MEN}}
+    MON = {puppet = MEN
+    white_peace = JAP}}
     
     option = {
     name = mongolia.13.b 
@@ -490,7 +497,8 @@ country_event = {
     option = { 
     name = mongolia.13.a
     ai_chance = { factor = 80 }
-    MON = {puppet = PRC}}
+    MON = {puppet = PRC
+    white_peace = JAP}}
     
     option = {
     name = mongolia.13.b 
