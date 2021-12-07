@@ -351,12 +351,5 @@ if = {
 		}
 	}
 }
-create_country_leader = {
-	name = Board of Executives
-	desc = ""
-	picture = GFX_Portrait_Switzerland_Federal_council
-	ideology = Anarcho Capitalism
-	traits = {
-	
 	}
 }
