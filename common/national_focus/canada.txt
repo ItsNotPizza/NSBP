@@ -2780,6 +2780,7 @@
 		prerequisite = { focus = CAN_patriation }
 		mutually_exclusive = { focus = CAN_burn_the_royal_portraits }
 		mutually_exclusive = { focus = CAN_swastika_clubs }
+		mutually_exclusive = { focus = CAN_Empower_the_corps }
 		x = 0
 		y = 1
 		relative_position_id = CAN_patriation
@@ -2961,6 +2962,7 @@
 		prerequisite = { focus = CAN_patriation }
 		mutually_exclusive = { focus = CAN_burn_the_royal_portraits }
 		mutually_exclusive = { focus = CAN_permanent_joint_defense_board }
+		mutually_exclusive = { focus = CAN_Empower_the_corps }
 		x = 4
 		y = 1
 		relative_position_id = CAN_patriation
@@ -3315,6 +3317,7 @@
 		prerequisite = { focus = CAN_patriation }
 		mutually_exclusive = { focus = CAN_swastika_clubs }
 		mutually_exclusive = { focus = CAN_permanent_joint_defense_board }
+		mutually_exclusive = { focus =  CAN_Empower_the_corps }
 		x = 8
 		y = 1
 		relative_position_id = CAN_patriation
@@ -3682,7 +3685,7 @@
 	focus = {
 		id = CAN_rcaf_station_borden
 		icon = GFX_goal_generic_build_airforce
-		x = 35
+		x = 40
 		y = 0
 
 		cost = 10
@@ -4190,7 +4193,7 @@
 	focus = {
 		id = CAN_halifax_shipyards
 		icon = GFX_goal_generic_construct_naval_dockyard
-		x = 39
+		x = 44
 		y = 0
 
 		cost = 10
@@ -4595,4 +4598,463 @@
 		}
 	}
 
-}		
+
+	focus = {
+		id = CAN_Empower_the_corps
+		icon = GFX_goal_generic_consumer_goods
+		prerequisite = { focus = CAN_patriation }
+		mutually_exclusive = { focus = CAN_burn_the_royal_portraits }
+		mutually_exclusive = { focus = CAN_permanent_joint_defense_board }
+		mutually_exclusive = { focus = CAN_swastika_clubs }
+		x = 12
+		y = 1
+		relative_position_id = CAN_patriation
+
+		cost = 10
+
+
+
+		available = {
+			NOT = { has_country_flag = britain_enforced_our_loyalty }
+		}
+		
+		bypass = {
+
+		}
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = yes
+		search_filters = { FOCUS_FILTER_TFV_AUTONOMY }
+
+		completion_reward = {
+			add_autonomy_ratio = {
+				value = 0.2
+			}
+}
+	}
+
+
+	focus = {
+		id = CAN_Corprate_takeover
+		icon = GFX_goal_generic_consumer_goods
+		prerequisite = { focus = CAN_Empower_the_corps }
+		relative_position_id = CAN_Empower_the_corps
+		x = 0
+		y = 1
+
+		cost = 10
+
+
+
+		available = {
+			is_subject = no
+			has_government = democratic
+			NOT = { has_country_flag = britain_enforced_our_loyalty }
+		}
+		
+		
+		bypass = {
+
+		}
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = yes
+		search_filters = { FOCUS_FILTER_TFV_AUTONOMY }
+
+		completion_reward = {
+		set_cosmetic_tag = CAN_ANC 
+		}
+	}	
+
+
+	focus = {
+		id = CAN_Build_CAN_Sentiment_In_Alaska
+		icon = GFX_focus_SOV_recover_alaska
+		prerequisite = { focus = CAN_Corprate_takeover  }
+		relative_position_id = CAN_Corprate_takeover
+		x = -1
+		y = 1
+
+		cost = 10
+
+
+
+		available = {
+			is_subject = no
+			has_government = democratic
+			NOT = { has_country_flag = britain_enforced_our_loyalty }
+		}
+		
+		
+		bypass = {
+
+		}
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = yes
+		search_filters = { FOCUS_FILTER_TFV_AUTONOMY }
+
+		completion_reward = {
+			add_state_core = 463
+			USA = {
+			add_opinion_modifier = {
+				    target = CAN 
+					modifier = CAN_supply_the_red_army_trade
+		}}
+}
+}
+
+
+	focus = {
+		id = CAN_Build_CAN_Sentiment_In_NFL
+		icon = GFX_goal_tfv_strengthen_commonwealth_ties
+		prerequisite = { focus = CAN_Corprate_takeover  }
+		relative_position_id = CAN_Corprate_takeover
+		x = 1
+		y = 1
+
+		cost = 10
+
+
+
+		available = {
+			is_subject = no
+			has_government = democratic
+			NOT = { has_country_flag = britain_enforced_our_loyalty }
+		}
+		
+		
+		bypass = {
+
+		}
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = yes
+		search_filters = { FOCUS_FILTER_TFV_AUTONOMY }
+
+		completion_reward = {
+				ENG = {
+			add_opinion_modifier = {
+					target = PREV
+					modifier = CAN_supply_the_red_army_trade
+			}
+				}
+		}
+	}
+
+
+	focus = {
+		id = CAN_ANC_demand_labrador_and_newfoundland
+		icon = GFX_goal_generic_territory_or_war
+		prerequisite = { focus = CAN_Build_CAN_Sentiment_In_NFL }
+		relative_position_id = CAN_Build_CAN_Sentiment_In_NFL
+		x = 0
+		y = 1
+
+		cost = 10
+
+		ai_will_do = {
+			factor = 25
+		}
+
+		available = {
+			NOT = { has_country_flag = britain_enforced_our_loyalty }
+		}
+		
+		bypass = {
+
+		}
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+		search_filters = { FOCUS_FILTER_ANNEXATION }
+
+		completion_reward = {
+			ENG = {
+				country_event = { id = tfv_canada.60 }
+			}
+		}
+	}
+
+
+
+	focus = {
+		id = CAN_ANC_Seize_Alaska
+		icon = GFX_focus_eng_move_to_secure_the_dominions
+		prerequisite = { focus = CAN_Build_CAN_Sentiment_In_Alaska }
+		relative_position_id = CAN_Build_CAN_Sentiment_In_Alaska
+		x = 0
+		y = 1
+
+		cost = 10
+
+		ai_will_do = {
+			factor = 25
+		}
+
+		available = {
+			NOT = { has_country_flag = britain_enforced_our_loyalty }
+		}
+		
+		bypass = {
+
+		}
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+		search_filters = { FOCUS_FILTER_ANNEXATION }
+
+		completion_reward = {
+			USA = {
+			country_event = { id = tfv_canada.63  }
+			}
+}
+	}
+
+
+
+	focus = {
+		id = CAN_ANC_Policys
+		icon = GFX_focus_spr_torchbearers_of_tomorrow
+		prerequisite = { focus = CAN_ANC_Seize_Alaska  }
+		prerequisite = { focus = CAN_ANC_demand_labrador_and_newfoundland }
+		relative_position_id = CAN_ANC_Seize_Alaska
+		x = 1
+		y = 1
+
+		cost = 10
+
+
+
+		available = {
+			is_subject = no
+			has_government = democratic
+			NOT = { has_country_flag = britain_enforced_our_loyalty }
+		}
+		
+		
+		bypass = {
+
+		}
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = yes
+		search_filters = { FOCUS_FILTER_TFV_AUTONOMY }
+
+		completion_reward = {	
+		 add_ideas = SPR_collectivized_society
+		 add_stability = -1.0
+		}
+	}
+
+
+
+	focus = {
+		id = CAN_Demand_Western_territorys
+		icon = GFX_goal_demand_sudetenland
+		prerequisite = { focus = CAN_ANC_Policys  }
+		relative_position_id = CAN_ANC_Policys
+		mutually_exclusive = { focus = CAN_hostile_takeover }
+		x = -1
+		y = 1
+
+		cost = 10
+
+
+
+		available = {
+			is_subject = no
+			has_government = democratic
+			NOT = { has_country_flag = britain_enforced_our_loyalty }
+		}
+		
+		
+		bypass = {
+
+		}
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = yes
+		search_filters = { FOCUS_FILTER_TFV_AUTONOMY }
+
+		completion_reward = {
+			USA = {
+			country_event = { id = tfv_canada.64  }
+			}
+			}
+	}
+
+
+	focus = {
+		id = CAN_hostile_takeover
+		icon = GFX_goal_generic_major_war
+		prerequisite = { focus = CAN_ANC_Policys  }
+		relative_position_id = CAN_ANC_Policys
+		mutually_exclusive = { focus =  CAN_Demand_Western_territorys }
+
+		x = 1
+		y = 1
+
+		cost = 10
+
+
+
+		available = {
+			is_subject = no
+			has_government = democratic
+			NOT = { has_country_flag = britain_enforced_our_loyalty }
+		}
+		
+		
+		bypass = {
+
+		}
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = yes
+		search_filters = { FOCUS_FILTER_TFV_AUTONOMY }
+
+		completion_reward = { CAN = {create_wargoal = {
+					type = annex_everything
+					target = USA 
+					generator = { 44 } }
+		}
+		}
+	}
+
+
+
+	focus = {
+		id = CAN_North_West_Corp 
+		icon = GFX_goal_generic_intelligence_exchange
+		prerequisite = { focus = CAN_Demand_Western_territorys  }
+		relative_position_id = CAN_Demand_Western_territorys
+		x = 0
+		y = 1
+
+		cost = 10
+
+
+
+		available = {
+			is_subject = no
+			has_government = democratic
+			NOT = { has_country_flag = britain_enforced_our_loyalty }
+		}
+		
+		
+		bypass = {
+
+		}
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = yes
+		search_filters = { FOCUS_FILTER_TFV_AUTONOMY }
+
+		completion_reward = {
+			add_state_core = 386
+			add_state_core = 385
+			add_state_core = 387
+			add_state_core = 388
+			set_capital = { state = 473 }
+			set_cosmetic_tag = CAN_ANC_WES
+			}
+	}
+
+
+
+	focus = {
+		id = CAN_CORP_MERG
+		icon = GFX_goal_generic_national_unity
+		prerequisite = { focus = CAN_hostile_takeover  }
+		relative_position_id = CAN_hostile_takeover 
+
+		x = 0
+		y = 1
+
+		cost = 10
+
+
+
+		available = {
+			is_subject = no
+			has_government = democratic
+			NOT = { has_country_flag = britain_enforced_our_loyalty }
+			owns_state = 361
+			owns_state = 358
+		}
+		
+		
+		bypass = {
+
+		}
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = yes
+		search_filters = { FOCUS_FILTER_TFV_AUTONOMY }
+
+		completion_reward = {
+		add_state_core = 378
+		add_state_core = 379
+		add_state_core = 380
+		add_state_core = 377
+		add_state_core = 381
+		add_state_core = 382
+		add_state_core = 376
+		add_state_core = 375
+		add_state_core = 374
+		add_state_core = 383
+		add_state_core = 384
+		add_state_core = 390
+		add_state_core = 389
+		add_state_core = 391
+		add_state_core = 392
+		add_state_core = 373
+		add_state_core = 372
+		add_state_core = 371
+		add_state_core = 394
+		add_state_core = 395
+		add_state_core = 369
+		add_state_core = 368
+		add_state_core = 370
+		add_state_core = 367
+		add_state_core = 393
+		add_state_core = 396
+		add_state_core = 261
+		add_state_core = 357
+		add_state_core = 358
+		add_state_core = 360
+		add_state_core = 359
+		add_state_core = 362
+		add_state_core = 816
+		add_state_core = 363
+		add_state_core = 364
+		add_state_core = 365
+		add_state_core = 366
+		add_state_core = 361
+		add_state_core = 386
+		add_state_core = 385
+		add_state_core = 387
+		add_state_core = 388
+		set_capital = { state = 358 }
+		set_cosmetic_tag = CAN_ANC_USA 
+		}
+	}
+}
+		
+
+
+
+
+	

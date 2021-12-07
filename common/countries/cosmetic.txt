@@ -816,3 +816,15 @@ JAP_MON = {
 	color = rgb { 204 99 12 }
 	color_ui = rgb { 204 99 12 }
 }
+CAN_ANC = {
+	color = rgb { 226 230 2 }
+	color_ui = rgb { 226 230 2 }
+}
+CAN_ANC_WES = {
+	color = rgb { 5 42 59 }
+	color_ui = rgb { 5 42 59}
+}
+CAN_ANC_USA = {
+	color = rgb { 226 230 2 }
+	color_ui = rgb { 226 230 2 }
+}

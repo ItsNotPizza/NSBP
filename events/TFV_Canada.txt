@@ -721,3 +721,73 @@ country_event = {
 	}
 }
 
+
+country_event = {
+	id = tfv_canada.63
+	title = tfv_canada.63.t
+	desc = tfv_canada.63.d
+	picture = GFX_report_event_canada_army
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = tfv_canada.63.a
+		ai_chance = { 
+		base = 80 
+		}
+
+		CAN = { transfer_state = 463 }
+	}
+
+
+	option = {
+		name = tfv_canada.63.b 
+		ai_chance = {
+		base = 20
+		}
+		
+		CAN = {transfer_state = 463 }
+		USA = {
+			declare_war_on = {
+				target = CAN
+				type = take_state_focus
+				generator = { 463 }
+		}
+		}
+	}
+}
+
+
+country_event = {
+	id = tfv_canada.64
+	title = tfv_canada.64.t
+	desc = tfv_canada.64.d
+	picture = GFX_report_event_canada_army
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = tfv_canada.64.a
+		ai_chance = {
+		base = 60
+		}
+		
+		CAN = {transfer_state = 385 }
+		CAN = {transfer_state = 388 }
+		CAN = {transfer_state = 387 }
+		CAN = {transfer_state = 386 }
+	}
+
+	option = {
+		name = tfv_canada.64.b 
+		ai_chance = {
+		base = 40
+		}
+		 CAN = {create_wargoal = {
+					type = annex_everything
+					target = USA 
+					generator = { 44 }
+	}
+		 }
+	}
+}

@@ -986,7 +986,1193 @@ focus_tree = {
 			add_state_core = 622
 		}
 	}
+
+
+	focus = {
+		id = MON_Empire_Rally_The_Monarchists
+		icon = GFX_focus_eng_god_save_the_king
+        relative_position_id =  MON_Empire_Path
+        prerequisite = { focus = MON_Empire_Path  } 
+		
+		
+		
+		
+
+
+        
+		x = 0
+		y = 1
+		cost = 10
+		search_filters = {  FOCUS_FILTER_RESEARCH }
+		
+		available_if_capitulated = yes
+		completion_reward = { 
+			add_popularity = {
+						ideology = neutrality
+						popularity = 0.1 }
+			add_stability = 0.05
+		}
 }
+
+		focus = {
+		id = MON_Empire_Support_Other_Factions
+		icon = GFX_goal_generic_major_alliance
+        relative_position_id =  MON_Empire_Rally_The_Monarchists
+        prerequisite = { focus = MON_Empire_Rally_The_Monarchists } 
+		
+		
+		
+		
+
+
+        
+		x = -1
+		y = 1
+		cost = 10
+		search_filters = {  FOCUS_FILTER_RESEARCH }
+		
+		available_if_capitulated = yes
+		completion_reward = { 
+			add_popularity = {
+						ideology = fascism
+						popularity = 0.1 }
+			add_popularity = {
+						ideology = democratic
+						popularity = 0.1 }
+			add_stability = -0.02
+		}
+		}
+
+
+		focus = {
+		id = MON_Empire_Infiltrate_The_Gov
+		icon = GFX_goal_tfv_strengthen_commonwealth_ties
+        relative_position_id =  MON_Empire_Rally_The_Monarchists
+        prerequisite = { focus = MON_Empire_Rally_The_Monarchists } 
+		
+		
+		
+		
+
+
+        
+		x = 1
+		y = 1
+		cost = 5
+		search_filters = {  FOCUS_FILTER_RESEARCH }
+		
+		available_if_capitulated = yes
+		completion_reward = { 
+			add_popularity = {
+						ideology = neutrality
+						popularity = 0.05 }
+		}
+		}
+
+		focus = {
+		id = MON_Empire_Launch_A_Coup
+		icon = GFX_goal_generic_major_war
+        relative_position_id = MON_Empire_Infiltrate_The_Gov
+        prerequisite = { focus = MON_Empire_Infiltrate_The_Gov } 
+		prerequisite = { focus =  MON_Empire_Support_Other_Factions }
+
+		
+		
+		
+		
+
+
+        
+		x = -1
+		y = 1
+		cost = 5
+		search_filters = {  FOCUS_FILTER_RESEARCH }
+		
+		available_if_capitulated = yes
+		completion_reward = {  country_event = { id = mongolia.12 }}
+		}
+
+
+		focus = {
+		id = MON_Embrase_The_Khan
+		icon = GFX_goal_generic_demand_territory
+        relative_position_id = MON_Empire_Launch_A_Coup
+        prerequisite = { focus = MON_Empire_Launch_A_Coup } 
+
+		
+		
+		
+		
+
+
+        
+		x = -1
+		y = 1
+		cost = 5
+		search_filters = {  FOCUS_FILTER_RESEARCH }
+		
+		available_if_capitulated = yes
+		completion_reward = {
+			add_country_leader_trait = spirit_of_genghis
+}
+		}
+
+
+		focus = {
+		id = MON_Build_Up_The_Army
+		icon = GFX_goal_generic_construct_mil_factory
+        relative_position_id = MON_Empire_Launch_A_Coup
+        prerequisite = { focus = MON_Empire_Launch_A_Coup } 
+
+		
+		
+		
+		
+
+
+        
+		x = 1
+		y = 1
+		cost = 10
+		search_filters = {  FOCUS_FILTER_RESEARCH }
+		
+		available_if_capitulated = yes
+		completion_reward = {
+			random_owned_controlled_state = {
+				limit = {
+					arms_factory > 0
+					free_building_slots = {
+						building = arms_factory
+						size > 1
+						include_locked = yes
+					}
+					is_on_continent = europe
+				}
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+					type = arms_factory
+					level = 2
+					instant_build = yes
+				}
+			}
+			random_owned_controlled_state = {
+				limit = {
+					arms_factory > 0
+					free_building_slots = {
+						building = arms_factory
+						size > 1
+						include_locked = yes
+					}
+					is_on_continent = europe
+				}
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+					type = arms_factory
+					level = 2
+					instant_build = yes
+				}
+			}
+			if = {
+				limit = {
+					NOT = {
+						any_owned_state = {
+							arms_factory > 0
+							free_building_slots = {
+								building = arms_factory
+								size > 1
+								include_locked = yes
+							}
+							is_on_continent = europe
+						}
+					}					
+				}
+				random_owned_controlled_state = {
+					limit = {
+						arms_factory > 0
+						free_building_slots = {
+							building = arms_factory
+							size > 1
+							include_locked = yes
+						}
+						is_on_continent = europe
+					}
+					add_extra_state_shared_building_slots = 2
+					add_building_construction = {
+						type = arms_factory
+						level = 2
+						instant_build = yes
+					}
+				}
+				random_owned_controlled_state = {
+					limit = {
+						arms_factory > 0
+						free_building_slots = {
+							building = arms_factory
+							size > 1
+							include_locked = yes
+						}
+						is_on_continent = europe
+					}
+					add_extra_state_shared_building_slots = 2
+					add_building_construction = {
+						type = arms_factory
+						level = 2
+						instant_build = yes
+					}
+				}			
+			}
+			if = {
+				limit = {
+					NOT = {
+						any_owned_state = {
+							free_building_slots = {
+								building = arms_factory
+								size > 1
+								include_locked = yes
+							}
+							is_on_continent = europe
+						}
+					}					
+				}
+				random_owned_controlled_state = {
+					limit = {
+						free_building_slots = {
+							building = arms_factory
+							size > 1
+							include_locked = yes
+						}
+					}
+					add_extra_state_shared_building_slots = 2
+					add_building_construction = {
+						type = arms_factory
+						level = 2
+						instant_build = yes
+					}
+				}
+				random_owned_controlled_state = {
+					limit = {
+						free_building_slots = {
+							building = arms_factory
+							size > 1
+							include_locked = yes
+						}
+					}
+					add_extra_state_shared_building_slots = 2
+					add_building_construction = {
+						type = arms_factory
+						level = 2
+						instant_build = yes
+					
+					}
+				}			
+			}
+			add_ideas = militarism_focus
+		}
+    }
+
+
+	focus = {
+		id = MON_Send_Ultimatums_to_warlords
+		icon = GFX_goal_generic_political_pressure
+        relative_position_id = MON_Build_Up_The_Army
+        prerequisite = { focus = MON_Build_Up_The_Army } 
+		prerequisite = { focus = MON_Embrase_The_Khan } 
+
+		
+		
+		
+		
+
+
+        
+		x = -1
+		y = 1
+		cost = 10
+		search_filters = {  FOCUS_FILTER_RESEARCH }
+		
+		available_if_capitulated = yes
+		completion_reward = {
+		SIK = {country_event = { id = mongolia.13 }} 
+		XSM = {country_event = { id = mongolia.14 }} 
+		SHX = {country_event = { id = mongolia.15 }} 
+		MEN = {country_event = { id = mongolia.16 }} 
+		PRC = {country_event = { id = mongolia.17 }} 
+		}
+	}
+
+
+		focus = {
+		id = MON_Send_Merge_the_Warlords
+		icon =  GFX_goal_generic_national_unity
+        relative_position_id = MON_Send_Ultimatums_to_warlords
+        prerequisite = { focus = MON_Send_Ultimatums_to_warlords } 
+		available = {
+		SIK = { is_subject_of = MON}
+		XSM = { is_subject_of = MON}
+		SHX = { is_subject_of = MON}
+		MEN = { is_subject_of = MON}
+		PRC = { is_subject_of = MON}
+		}
+		
+		
+		
+		
+
+
+        
+		x = 2
+		y = 1
+		cost = 10
+		search_filters = {  FOCUS_FILTER_RESEARCH }
+		
+		available_if_capitulated = yes
+		completion_reward = {
+		PRC = {
+			 annex_country = {
+							target = SIK }
+			 annex_country = {
+							target = XSM }
+			  annex_country = {
+							target = SHX }
+			  annex_country = {
+							target = MEN 
+			  }
+		 set_cosmetic_tag = MON_CHI 
+		}
+		}
+		}
+
+
+		focus = {
+		id = MON_Intergrate_China
+		icon = GFX_focus_generic_diplomatic_treaty
+        relative_position_id = MON_Send_Ultimatums_to_warlords
+        prerequisite = { focus = MON_Send_Ultimatums_to_warlords } 
+		available = {
+		PRC = { is_subject_of = MON}
+		}
+		
+		
+		
+		
+
+
+        
+		x = 0
+		y = 1
+		cost = 10
+		search_filters = {  FOCUS_FILTER_RESEARCH }
+		
+		available_if_capitulated = yes
+		completion_reward = {
+			annex_country = {
+							target = PRC }
+			add_state_core = 618
+			add_state_core = 617
+			add_state_core = 619
+			add_state_core = 287
+			add_state_core = 760
+			add_state_core = 759
+			add_state_core = 756
+			add_state_core = 755
+			add_state_core = 604
+			add_state_core = 616
+			add_state_core = 283
+			add_state_core = 753
+			add_state_core = 616
+			add_state_core = 621
+			add_state_core = 746
+			add_state_core = 622
+			add_state_core = 615
+			add_state_core = 611
+			add_state_core = 612
+			add_state_core = 754
+			 
+		}
+		}
+
+
+		focus = {
+		id = MON_Deal_With_Tibet
+		icon = GFX_goal_generic_major_war
+	    relative_position_id =  MON_Send_Merge_the_Warlords
+        prerequisite = { focus =  MON_Send_Merge_the_Warlords } 
+		prerequisite = { focus = MON_Intergrate_China }
+		
+		
+		
+		
+		
+		
+
+
+        
+		x = -1
+		y = 1
+		cost = 10
+		search_filters = {  FOCUS_FILTER_RESEARCH }
+		
+		available_if_capitulated = yes
+		completion_reward = {
+			create_wargoal = {
+			type = take_state_focus
+			target = TIB 
+			generator = {44} }
+			add_state_core = 322
+			add_state_core = 758
+			add_state_core = 757
+		}
+		}
+
+
+		focus = {
+		id = MON_Deal_With_china
+		icon = GFX_focus_chi_one_china_policy
+	    relative_position_id = MON_Deal_With_Tibet 
+        prerequisite = { focus = MON_Deal_With_Tibet  } 
+		
+		
+		
+		
+		
+		
+		
+
+
+        
+		x = 0
+		y = 1
+		cost = 10
+		search_filters = {  FOCUS_FILTER_RESEARCH }
+		
+		available_if_capitulated = yes
+		completion_reward = {
+			create_wargoal = {
+			type = take_state_focus
+			target = CHI }
+			create_wargoal = {
+			type = take_state_focus
+			target = YUN  }
+			create_wargoal = {
+			type = take_state_focus
+			target = GXC }
+		add_state_core = 601
+		add_state_core = 752
+		add_state_core = 751
+		add_state_core = 603
+		add_state_core = 748
+		add_state_core = 605
+		add_state_core = 744
+		add_state_core = 620
+		add_state_core = 750
+		add_state_core = 602
+		add_state_core = 607
+		add_state_core = 608
+		add_state_core = 614
+		add_state_core = 597
+		add_state_core = 598
+		add_state_core = 613
+		add_state_core = 596
+		add_state_core = 595
+		add_state_core = 606
+		add_state_core = 749
+		add_state_core = 600
+		add_state_core = 593
+		add_state_core = 592
+		add_state_core = 599
+		add_state_core = 594
+		add_state_core = 591
+		add_state_core = 325
+		add_state_core = 747 }
+		}
+
+
+		focus = {
+		id = MON_Claim_the_throne
+		icon = GFX_goal_generic_propaganda
+	    relative_position_id =  MON_Deal_With_china
+        prerequisite = { focus =  MON_Deal_With_china } 
+		
+		
+		
+		
+		
+
+
+        
+		x = 0
+		y = 1
+		cost = 10
+		search_filters = {  FOCUS_FILTER_RESEARCH }
+		
+		available_if_capitulated = yes
+		completion_reward = {
+			set_cosmetic_tag = MON_EMP 
+		}
+		}
+
+
+		focus = {
+		id = MON_Deal_With_Jap
+		icon = GFX_focus_AST_war_japan
+	    relative_position_id =  MON_Claim_the_throne
+        prerequisite = { focus =  MON_Claim_the_throne } 
+		
+		
+		
+		
+		
+
+
+        
+		x = 0
+		y = 1
+		cost = 10
+		search_filters = {  FOCUS_FILTER_RESEARCH }
+		
+		available_if_capitulated = yes
+		completion_reward = {
+			create_wargoal = {
+			type = take_state_focus
+			target = JAP }
+			create_wargoal = {
+			type = take_state_focus
+			target = MAN }
+		    add_state_core = 609
+			add_state_core = 610
+			add_state_core = 715
+			add_state_core = 716
+			add_state_core = 328
+			add_state_core = 717
+			add_state_core = 761
+			add_state_core = 714
+			add_state_core = 745
+			add_state_core = 527
+			add_state_core = 525 }
+		}
+
+
+		focus = {
+		id = MON_Industral_Effort
+		icon = GFX_goal_generic_production
+		
+		
+		
+		
+		
+
+
+        
+		x = 40
+		y = 0
+		cost = 5
+		search_filters = {  FOCUS_FILTER_RESEARCH }
+		
+		available_if_capitulated = yes
+		completion_reward = {
+			add_tech_bonus = {
+				name = industrial_bonus
+				bonus = 2.0
+				uses = 1
+				category = industry
+			}
+		}
+		}
+
+
+		focus = {
+		id = MON_Inf_effort
+		icon =  GFX_goal_generic_construct_infrastructure
+	    relative_position_id =  MON_Industral_Effort
+        prerequisite = { focus = MON_Industral_Effort  } 
+		
+		
+		
+		
+		
+
+
+        
+		x = 3
+		y = 1
+		cost = 10
+		search_filters = {  FOCUS_FILTER_RESEARCH }
+		
+		available_if_capitulated = yes
+		completion_reward = { 
+			random_owned_controlled_state = {
+				limit = {
+					free_building_slots = {
+						building = infrastructure
+						size > 0
+					}
+					OR = {
+						is_in_home_area = yes
+						NOT = {
+							owner = {
+								any_owned_state = {
+									free_building_slots = {
+										building = infrastructure
+										size > 0
+									}
+									is_in_home_area = yes
+								}
+							}
+						}
+					}
+				}
+				add_building_construction = {
+					type = infrastructure
+					level = 1
+					instant_build = yes
+				}
+			}
+			random_owned_controlled_state = {
+				limit = {
+					free_building_slots = {
+						building = infrastructure
+						size > 1
+					}
+					OR = {
+						is_in_home_area = yes
+						NOT = {
+							owner = {
+								any_owned_state = {
+									free_building_slots = {
+										building = infrastructure
+										size > 1
+									}
+									is_in_home_area = yes
+								}
+							}
+						}
+					}
+				}
+				add_building_construction = {
+					type = infrastructure
+					level = 2
+					instant_build = yes
+				}
+			}
+		}
+	}
+
+
+
+	focus = {
+		id = MON_Civ_effort
+		icon =  GFX_goal_generic_construct_civ_factory
+	    relative_position_id =  MON_Industral_Effort
+        prerequisite = { focus = MON_Industral_Effort  } 
+		
+		
+		
+		
+		
+
+
+        
+		x = -3
+		y = 1
+		cost = 10
+		
+		available_if_capitulated = yes
+		completion_reward = { 
+			random_owned_controlled_state = {
+				limit = {
+					free_building_slots = {
+						building = industrial_complex
+						size > 1
+						include_locked = yes
+					}
+					is_on_continent = europe
+				}
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+					type = industrial_complex
+					level = 2
+					instant_build = yes
+				}
+			}
+			random_owned_controlled_state = {
+				limit = {
+					free_building_slots = {
+						building = industrial_complex
+						size > 1
+						include_locked = yes
+					}
+					is_on_continent = europe
+				}
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+					type = industrial_complex
+					level = 2
+					instant_build = yes
+				}
+			}
+			if = {
+				limit = {
+					NOT = {
+						any_owned_state = {
+							free_building_slots = {
+								building = industrial_complex
+								size > 1
+								include_locked = yes
+							}
+							is_on_continent = europe
+						}
+					}
+				}
+				random_owned_controlled_state = {
+					limit = {
+						free_building_slots = {
+							building = industrial_complex
+							size > 1
+							include_locked = yes
+						}
+					}
+					add_extra_state_shared_building_slots = 2
+					add_building_construction = {
+						type = industrial_complex
+						level = 2
+						instant_build = yes
+					}
+				}
+				random_owned_controlled_state = {
+					limit = {
+						free_building_slots = {
+							building = industrial_complex
+							size > 1
+							include_locked = yes
+						}
+					}
+					add_extra_state_shared_building_slots = 2
+					add_building_construction = {
+						type = industrial_complex
+						level = 2
+						instant_build = yes
+					}
+				}				
+			}
+		}
+	}
+
+
+
+
+
+	
+	focus = {
+		id = MON_Res_Slot
+		icon =  GFX_focus_research
+	    relative_position_id = MON_Civ_effort  
+        prerequisite = { focus = MON_Civ_effort } 
+		
+		
+		
+		
+		
+
+
+        
+		x = -1
+		y = 1
+		cost = 10
+		
+		available_if_capitulated = yes
+		completion_reward = { 
+			add_research_slot = 1
+}
+	}
+
+
+
+	
+	focus = {
+		id = MON_Mil_Effort
+		icon =  GFX_goal_generic_construct_mil_factory
+	    relative_position_id = MON_Civ_effort 
+        prerequisite = { focus = MON_Civ_effort } 
+		
+		
+		
+		
+		
+
+
+        
+		x = 1
+		y = 1
+		cost = 10
+		
+		available_if_capitulated = yes
+		completion_reward = { 
+			random_owned_controlled_state = {
+				limit = {
+					free_building_slots = {
+						building = arms_factory
+						size > 0
+						include_locked = yes
+					}
+					OR = {
+						is_in_home_area = yes
+						NOT = {
+							owner = {
+								any_owned_state = {
+									free_building_slots = {
+										building = arms_factory
+										size > 0
+										include_locked = yes
+									}
+									is_in_home_area = yes
+								}
+							}
+						}
+					}
+				}
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = arms_factory
+					level = 1
+					instant_build = yes
+				}
+			}
+		}
+	}
+
+
+
+
+
+		focus = {
+		id = MON_Inf_effort_2
+		icon =  GFX_goal_generic_construct_infrastructure
+	    relative_position_id = MON_Inf_effort
+        prerequisite = { focus = MON_Inf_effort  } 
+		
+		
+		
+		
+		
+
+
+        
+		x = 0
+		y = 1
+		cost = 10
+		search_filters = {  FOCUS_FILTER_RESEARCH }
+		
+		available_if_capitulated = yes
+		completion_reward = { 
+			random_owned_controlled_state = {
+				limit = {
+					free_building_slots = {
+						building = infrastructure
+						size > 0
+					}
+					OR = {
+						is_in_home_area = yes
+						NOT = {
+							owner = {
+								any_owned_state = {
+									free_building_slots = {
+										building = infrastructure
+										size > 0
+									}
+									is_in_home_area = yes
+								}
+							}
+						}
+					}
+				}
+				add_building_construction = {
+					type = infrastructure
+					level = 1
+					instant_build = yes
+				}
+			}
+			random_owned_controlled_state = {
+				limit = {
+					free_building_slots = {
+						building = infrastructure
+						size > 1
+					}
+					OR = {
+						is_in_home_area = yes
+						NOT = {
+							owner = {
+								any_owned_state = {
+									free_building_slots = {
+										building = infrastructure
+										size > 1
+									}
+									is_in_home_area = yes
+								}
+							}
+						}
+					}
+				}
+				add_building_construction = {
+					type = infrastructure
+					level = 2
+					instant_build = yes
+				}
+			}
+		}
+	}
+
+
+	focus = {
+		id = MON_Nuke_Effort
+		icon =  GFX_focus_wonderweapons
+	    relative_position_id = MON_Inf_effort_2
+        prerequisite = { focus = MON_Inf_effort_2 } 
+		
+		
+		
+		
+		
+
+
+        
+		x = -1
+		y = 1
+		cost = 10
+		
+		available_if_capitulated = yes
+		completion_reward = { 
+			add_tech_bonus = {
+				name = nuclear_bonus
+				ahead_reduction = 2
+				category = nuclear
+			}
+}
+	}
+
+
+	focus = {
+		id = MON_Mil_Effort_2
+		icon =  GFX_goal_generic_construct_mil_factory
+	    relative_position_id = MON_Mil_Effort 
+        prerequisite = { focus = MON_Mil_Effort } 
+		
+		
+		
+		
+		
+
+
+        
+		x = 0
+		y = 1
+		cost = 10
+		
+		available_if_capitulated = yes
+		completion_reward = { 
+			random_owned_controlled_state = {
+				limit = {
+					free_building_slots = {
+						building = arms_factory
+						size > 0
+						include_locked = yes
+					}
+					OR = {
+						is_in_home_area = yes
+						NOT = {
+							owner = {
+								any_owned_state = {
+									free_building_slots = {
+										building = arms_factory
+										size > 0
+										include_locked = yes
+									}
+									is_in_home_area = yes
+								}
+							}
+						}
+					}
+				}
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = arms_factory
+					level = 1
+					instant_build = yes
+				}
+			}
+		}
+	}
+
+
+
+	focus = {
+		id = MON_Res_Slot_2
+		icon =  GFX_focus_research
+	    relative_position_id =  MON_Nuke_Effort 
+        prerequisite = { focus = MON_Nuke_Effort  } 
+		prerequisite = { focus = MON_Mil_Effort_2 } 
+		
+		
+		
+		
+		
+
+
+        
+		x = -2
+		y = 2 
+		cost = 10
+		
+		available_if_capitulated = yes
+		completion_reward = { 
+			add_research_slot = 1
+}
+	}
+
+
+		focus = {
+		id = MON_Rocket_Effort
+		icon =  GFX_focus_rocketry
+	    relative_position_id =   MON_Inf_effort_2
+        prerequisite = { focus =  MON_Inf_effort_2 } 
+		
+		
+		
+		
+		
+
+
+        
+		x = 1
+		y = 1
+		cost = 10
+		
+		available_if_capitulated = yes
+		completion_reward = { add_tech_bonus = {
+				name = jet_rocket_bonus
+				ahead_reduction = 2
+				uses = 2
+				category = rocketry
+				category = jet_technology
+			} }
+		}
+
+
+		focus = {
+		id = MON_Civ_effort_2
+		icon =  GFX_goal_generic_construct_civ_factory
+	    relative_position_id = MON_Res_Slot 
+        prerequisite = { focus = MON_Res_Slot   } 
+		
+		
+		
+		
+		
+
+
+        
+		x = 0
+		y = 1
+		cost = 10
+		
+		available_if_capitulated = yes
+		completion_reward = { 
+			random_owned_controlled_state = {
+				limit = {
+					free_building_slots = {
+						building = industrial_complex
+						size > 1
+						include_locked = yes
+					}
+					is_on_continent = europe
+				}
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+					type = industrial_complex
+					level = 2
+					instant_build = yes
+				}
+			}
+			random_owned_controlled_state = {
+				limit = {
+					free_building_slots = {
+						building = industrial_complex
+						size > 1
+						include_locked = yes
+					}
+					is_on_continent = europe
+				}
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+					type = industrial_complex
+					level = 2
+					instant_build = yes
+				}
+			}
+			if = {
+				limit = {
+					NOT = {
+						any_owned_state = {
+							free_building_slots = {
+								building = industrial_complex
+								size > 1
+								include_locked = yes
+							}
+							is_on_continent = europe
+						}
+					}
+				}
+				random_owned_controlled_state = {
+					limit = {
+						free_building_slots = {
+							building = industrial_complex
+							size > 1
+							include_locked = yes
+						}
+					}
+					add_extra_state_shared_building_slots = 2
+					add_building_construction = {
+						type = industrial_complex
+						level = 2
+						instant_build = yes
+					}
+				}
+				random_owned_controlled_state = {
+					limit = {
+						free_building_slots = {
+							building = industrial_complex
+							size > 1
+							include_locked = yes
+						}
+					}
+					add_extra_state_shared_building_slots = 2
+					add_building_construction = {
+						type = industrial_complex
+						level = 2
+						instant_build = yes
+					}
+				}				
+			}
+		}
+	}
+
+
+
+
+		
+
+
+
+
+
+
+
+		
+
+
+
+
+
+		
 				
 
 				

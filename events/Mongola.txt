@@ -326,4 +326,183 @@ country_event = {
 			ruling_party = fascism
 			elections_allowed = no}}
     }
+
+
+
+# Monarchists launch coup 
+
+
+country_event = {
+    id = mongolia.12
+    title = mongolia.12.t 
+    desc = mongolia.12.d 
+    is_triggered_only = yes 
+
+    
+    picture = GFX_report_event_election_vote
+
+    option = { 
+    name = mongolia.12.a
+         set_politics = {
+			ruling_party = neutrality
+			elections_allowed = no}
+    }
+}
+
+# warlord puppet SIK 
+
+
+country_event = {
+    id = mongolia.13
+    title = mongolia.13.t 
+    desc = mongolia.13.d 
+    is_triggered_only = yes 
+
+    
+    picture = GFX_report_event_election_vote
+
+    option = { 
+    name = mongolia.13.a
+    ai_chance = { factor = 80 }
+    MON = {puppet = SIK}}
+    
+    option = {
+    name = mongolia.13.b 
+    ai_chance = { factor = 20 }
+    add_political_power = -25 
+    MON = {
+    Create_wargoal = {
+			type = puppet_wargoal_focus
+			target = SIK
+			generator = {44}
+    }
+    }
+    }
+}
+
+# warlord puppet XSM 
+
+
+
+country_event = {
+    id = mongolia.14
+    title = mongolia.13.t 
+    desc = mongolia.13.d 
+    is_triggered_only = yes 
+
+    
+    picture = GFX_report_event_election_vote
+
+    option = { 
+    name = mongolia.13.a
+    ai_chance = { factor = 80 }
+    MON = {puppet = XSM}}
+    
+    option = {
+    name = mongolia.13.b 
+    ai_chance = { factor = 20 }
+    add_political_power = -25 
+    MON = {
+    Create_wargoal = {
+			type = puppet_wargoal_focus
+			target = XSM
+			generator = {44}
+    }
+    }
+    }
+}
+
+# warlord puppet SHX
+
+
+country_event = {
+    id = mongolia.15
+    title = mongolia.13.t 
+    desc = mongolia.13.d 
+    is_triggered_only = yes 
+
+    
+    picture = GFX_report_event_election_vote
+
+    option = { 
+    name = mongolia.13.a
+    ai_chance = { factor = 80}
+    MON = {puppet = SHX}}
+    
+    option = {
+    name = mongolia.13.b 
+    ai_chance = { factor = 20 }
+    add_political_power = -25 
+    MON = {
+    Create_wargoal = {
+			type = puppet_wargoal_focus
+			target = SHX
+			generator = {44}
+    }
+    }
+    }
+}
+
+
+# warlord puppet MEN 
+
+country_event = {
+    id = mongolia.16
+    title = mongolia.13.t 
+    desc = mongolia.13.d 
+    is_triggered_only = yes 
+
+    
+    picture = GFX_report_event_election_vote
+
+    option = { 
+    name = mongolia.13.a
+    ai_chance = { factor = 60 }
+    MON = {puppet = MEN}}
+    
+    option = {
+    name = mongolia.13.b 
+    ai_chance = { factor = 40 }
+    add_political_power = -25 
+    MON = {
+    Create_wargoal = {
+			type = puppet_wargoal_focus
+			target = MEN
+			generator = {44}
+    }
+    }
+    }
+}
+    
+
+
+# warlord puppet PRC 
+
+country_event = {
+    id = mongolia.17
+    title = mongolia.13.t 
+    desc = mongolia.13.d 
+    is_triggered_only = yes 
+
+    
+    picture = GFX_report_event_election_vote
+
+    option = { 
+    name = mongolia.13.a
+    ai_chance = { factor = 80 }
+    MON = {puppet = PRC}}
+    
+    option = {
+    name = mongolia.13.b 
+    ai_chance = { factor = 20 }
+    add_political_power = -25 
+    MON = {
+    Create_wargoal = {
+			type = puppet_wargoal_focus
+			target = PRC
+			generator = {44}
+    }
+    }
+    }
+}
     

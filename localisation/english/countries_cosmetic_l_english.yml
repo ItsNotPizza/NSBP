@@ -1297,3 +1297,13 @@
  JAP_MON_DEF:0 "Mongoru"
  MON_REI:0 "New Mongol Reich"
  MON_REI_DEF:0 "The New Mongol Reich"
+ MON_CHI:0 "Mongolian China"
+ MON_EMP:0 "Mongolian Empire"
+ MON_EMP_DEF:0 "The Mongolian Empire"
+ CAN_ANC:0 "The Corporation of Canada"
+ CAN_ANC_DEF:0 "The Corporation of Canada"
+ CAN_ANC_WES:0 "The North West Trade Company"
+ CAN_ANC_WES_desc:0 "The North West Trade Company"
+ CAN_ANC_USA:0 "The United Corporations of North America"
+ CAN_ANC_USA_desc:0 "The United Corporations of North America"
+
