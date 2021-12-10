@@ -1,0 +1,15 @@
+SWE_elections = {
+
+	allowed = {
+		original_tag = SWE
+	}
+
+    on_map_area = {
+		state = 124
+		name = ENG_organize_the_blackshirts_map_category_name
+		zoom = 250
+	}
+	visible = {
+
+		}
+	}

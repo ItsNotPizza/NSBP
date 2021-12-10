@@ -1,0 +1,752 @@
+focus_tree = {
+	id = Sweden_focus
+	
+	country = {
+		factor = 0
+		
+		modifier = {
+			add = 10
+			tag = SWE 
+			#always = no
+		}
+	}
+    continuous_focus_position = { x = 50 y = 1500 }
+
+    focus = {
+		id = SWE_Maintain_The_Policy_of_Neutrality
+		icon = GFX_focus_generic_support_the_left_right
+         mutually_exclusive = { 
+			focus = SWE_Adopt_Interventionism 
+        }
+		x = 15
+		y = 0
+		cost = 10
+		
+		available_if_capitulated = yes
+
+		completion_reward = {
+            add_political_power = 50
+        }
+    }
+
+
+     focus = {
+		id = SWE_Adopt_Interventionism
+		icon = GFX_goal_generic_political_pressure
+        mutually_exclusive = { 
+			focus = SWE_Maintain_The_Policy_of_Neutrality
+        }
+		x = 35
+		y = 0
+		cost = 10
+		
+		available_if_capitulated = yes
+
+		completion_reward = {
+            add_political_power = -50
+            remove_ideas = neutrality_idea
+        }
+    }
+
+
+     focus = {
+		id = SWE_Adopt_Further_Neutral_Ideas
+		icon = GFX_goal_generic_neutrality_focus
+        relative_position_id = SWE_Maintain_The_Policy_of_Neutrality
+        prerequisite = { focus = SWE_Maintain_The_Policy_of_Neutrality }
+         mutually_exclusive = { 
+			focus = ideas_of_a_new_swedish_empire
+        }
+
+		x = -2
+		y = 1
+		cost = 10
+		
+		available_if_capitulated = yes
+
+		completion_reward = {
+            add_war_support = -0.05 
+        }
+     }
+
+
+     focus = {
+		id = ideas_of_a_new_swedish_empire
+		icon = GFX_focus_eng_god_save_the_king
+        relative_position_id = SWE_Maintain_The_Policy_of_Neutrality
+        prerequisite = { focus = SWE_Maintain_The_Policy_of_Neutrality }
+         mutually_exclusive = { 
+			focus = SWE_Adopt_Further_Neutral_Ideas
+        }
+
+		x = 2
+		y = 1
+		cost = 10
+		
+		available_if_capitulated = yes
+
+		completion_reward = {
+            add_popularity = {
+						ideology = neutrality
+						popularity = 0.1 }
+        
+        }
+     }
+
+
+     focus = {
+		id = SWE_Dreams_of_a_Global_Org
+		icon = GFX_goal_support_democracy
+        relative_position_id = SWE_Adopt_Further_Neutral_Ideas
+        prerequisite = { focus = SWE_Adopt_Further_Neutral_Ideas }
+        
+        
+
+		x = 0
+		y = 1
+		cost = 10
+		
+		available_if_capitulated = yes
+
+		completion_reward = {
+            add_political_power = 100
+        }
+     }
+
+
+     focus = {
+		id = SWE_Foundations_For_A_United_Nations
+		icon = GFX_goal_generic_national_unity
+        relative_position_id = SWE_Dreams_of_a_Global_Org
+        prerequisite = { focus = SWE_Dreams_of_a_Global_Org }
+        
+        
+
+		x = 1
+		y = 1
+		cost = 10
+		
+		available_if_capitulated = yes
+
+		completion_reward = {
+            add_stability = 0.05
+        }
+     }
+
+
+     focus = {
+		id = SWE_Adopt_Skilled_Leaders
+		icon = GFX_focus_generic_military_mission
+        relative_position_id = SWE_Dreams_of_a_Global_Org
+        prerequisite = { focus = SWE_Dreams_of_a_Global_Org }
+        
+        
+
+		x = -1
+		y = 1
+		cost = 10
+		
+		available_if_capitulated = yes
+
+		completion_reward = {
+            add_manpower = 10000
+        }
+     }
+
+
+     focus = {
+		id = SWE_Finalize_Preperations
+		icon = GFX_focus_generic_support_the_left_right
+        relative_position_id = SWE_Adopt_Skilled_Leaders
+        prerequisite = { focus = SWE_Adopt_Skilled_Leaders }
+        prerequisite = { focus = SWE_Foundations_For_A_United_Nations }
+        
+        
+        
+
+		x = 1
+		y = 1
+		cost = 10
+		
+		available_if_capitulated = yes
+
+		completion_reward = {
+            set_cosmetic_tag = SWE_UN 
+        }
+     }
+
+
+
+
+     focus = {
+		id = SWE_Include_The_Aland_Islands
+		icon = GFX_goal_generic_build_navy
+        relative_position_id = SWE_Finalize_Preperations
+        prerequisite = { focus = SWE_Finalize_Preperations }
+        
+        
+
+		x = 0
+		y = 1
+		cost = 10
+		
+		available_if_capitulated = yes
+
+		completion_reward = { FIN = {country_event = sweden.1}}}
+
+
+        focus = {
+		id = SWE_Offer_Membership_To_Norway
+		icon = GFX_goal_generic_military_deal
+        relative_position_id =  SWE_Include_The_Aland_Islands
+        prerequisite = { focus =  SWE_Include_The_Aland_Islands }
+        
+        
+
+		x = -1
+		y = 1
+		cost = 10
+		
+		available_if_capitulated = yes
+
+		completion_reward = {
+          NOR = {country_event = sweden.2}}}
+
+
+
+        focus = {
+		id = SWE_Offer_Membership_To_Denmark
+		icon = GFX_goal_generic_military_deal
+        relative_position_id =  SWE_Include_The_Aland_Islands
+        prerequisite = { focus =  SWE_Include_The_Aland_Islands }
+        
+        
+
+		x = 1
+		y = 1
+		cost = 10
+		
+		available_if_capitulated = yes
+
+		completion_reward = { DEN = {country_event = sweden.3}}}
+
+
+
+        focus = {
+		id = SWE_Offer_Membership_To_Finland
+		icon = GFX_goal_generic_military_deal
+        relative_position_id =   SWE_Offer_Membership_To_Denmark
+        prerequisite = { focus =  SWE_Offer_Membership_To_Denmark  }
+        prerequisite = { focus =  SWE_Offer_Membership_To_Norway }
+        
+        
+
+		x = -1
+		y = 1
+		cost = 10
+		
+		available_if_capitulated = yes
+
+		completion_reward = { FIN = {country_event = sweden.4}}}
+
+
+
+		focus = {
+		id = SWE_Occupy_Neighboring_Islands
+		icon = GFX_goal_generic_forceful_treaty
+        relative_position_id = SWE_Offer_Membership_To_Finland 
+        prerequisite = { focus = SWE_Offer_Membership_To_Finland }
+        
+        
+
+		x = 0
+		y = 1
+		cost = 10
+		
+		available_if_capitulated = yes
+
+		completion_reward = {
+			 EST = {country_event = sweden.8}
+		}
+		}
+
+
+		focus = {
+		id = SWE_Occupy_Danzig
+		icon =  GFX_goal_generic_forceful_treaty
+        relative_position_id = SWE_Offer_Membership_To_Finland 
+        prerequisite = { focus = SWE_Offer_Membership_To_Finland }
+        
+        
+
+		x = -2
+		y = 1
+		cost = 10
+		
+		available_if_capitulated = yes
+
+		completion_reward = {
+			 POL = {country_event = sweden.9}
+			}
+		}
+
+
+		focus = {
+		id = SWE_Deal_With_The_Devil
+		icon = GFX_goal_generic_dangerous_deal
+        relative_position_id = SWE_Occupy_Danzig
+        prerequisite = { focus = SWE_Occupy_Danzig }
+        mutually_exclusive = { 
+			focus = SWE_Prevent_a_continental_hegemony
+		}
+        
+
+		x = 0
+		y = 1
+		cost = 10
+		
+		available_if_capitulated = yes
+
+		completion_reward = {
+		GER = {country_event = sweden.11}
+		}
+		}
+
+
+		focus = {
+		id = SWE_Prevent_a_continental_hegemony
+		icon = GFX_focus_usa_focus_on_europe
+        relative_position_id = SWE_Occupy_Neighboring_Islands
+        prerequisite = { focus = SWE_Occupy_Neighboring_Islands }
+        mutually_exclusive = { 
+			focus = SWE_Deal_With_The_Devil
+		}
+        
+
+		x = 0
+		y = 1
+		cost = 10
+		
+		available_if_capitulated = yes
+
+		completion_reward = {
+		SWE = {Create_wargoal = {
+        type = take_state_focus
+			target = GER 
+			generator = {58}
+		}
+		}
+		add_state_core = 58
+		add_state_core = 59
+		add_state_core = 60
+		add_state_core = 54
+		add_state_core = 53
+		add_state_core = 52
+		add_state_core = 50
+		add_state_core = 55
+		add_state_core = 57
+		add_state_core = 56
+		add_state_core = 51
+		add_state_core = 42
+		}
+		}
+
+
+		focus = {
+		id = SWE_Increase_Support_for_a_war
+		icon = GFX_goal_generic_political_pressure
+        relative_position_id = ideas_of_a_new_swedish_empire
+        prerequisite = { focus = ideas_of_a_new_swedish_empire }
+        
+
+		x = 0
+		y = 1
+		cost = 10
+		
+		available_if_capitulated = yes
+
+		completion_reward = {
+			add_war_support = 0.05
+			add_ideas = improve_war_support
+		}
+		}
+
+
+		focus = {
+		id = SWE_Increase_Monarchist_Sentiment
+		icon = GFX_goal_tfv_strengthen_commonwealth_ties
+        relative_position_id = SWE_Increase_Support_for_a_war
+        prerequisite = { focus = SWE_Increase_Support_for_a_war }
+        
+
+		x = -1
+		y = 1
+		cost = 10
+		
+		available_if_capitulated = yes
+
+		completion_reward = {
+			add_popularity = {
+						ideology = neutrality
+						popularity = 0.1 }
+		}
+		}
+
+
+		focus = {
+		id = SWE_Stage_Monarchist_Protests
+		icon = GFX_goal_tfv_saf_anti_colonialist_crusade
+        relative_position_id = SWE_Increase_Support_for_a_war
+        prerequisite = { focus = SWE_Increase_Support_for_a_war }
+        
+
+		x = 1
+		y = 1
+		cost = 10
+		
+		available_if_capitulated = yes
+
+		completion_reward = {
+			add_stability = -0.1 
+			add_popularity = {
+						ideology = neutrality
+						popularity = 0.05 }
+		}
+		}
+
+
+		focus = {
+		id = SWE_Force_The_Hand
+		icon = GFX_goal_generic_political_pressure
+        relative_position_id = SWE_Stage_Monarchist_Protests
+        prerequisite = { focus = SWE_Stage_Monarchist_Protests }
+		prerequisite = { focus = SWE_Increase_Monarchist_Sentiment }
+        
+
+		x = -1
+		y = 1
+		cost = 10
+		
+		available_if_capitulated = yes
+
+		completion_reward = {
+			SWE = {country_event = sweden.12}
+		}
+		}
+
+
+
+		focus = {
+		id = SWE_Return_Stability
+		icon = GFX_goal_generic_neutrality_focus
+        relative_position_id = SWE_Force_The_Hand
+        prerequisite = { focus = SWE_Force_The_Hand }
+
+		x = 0
+		y = 1
+		cost = 10
+		
+		available_if_capitulated = yes
+
+		completion_reward = {
+		add_stability = 0.1
+		}
+		}
+
+
+		focus = {
+		id = SWE_Ultimatium_to_Norway
+		icon = GFX_goal_generic_major_war
+        relative_position_id = SWE_Return_Stability
+        prerequisite = { focus = SWE_Return_Stability }
+
+		x = 0
+		y = 1
+		cost = 10
+		
+		available_if_capitulated = yes
+
+		completion_reward = {
+			NOR = {country_event = sweden.13}
+		}
+		}
+
+
+		focus = {
+		id = SWE_Strike_Finland
+		icon = GFX_goal_generic_major_war
+        relative_position_id = SWE_Ultimatium_to_Norway
+        prerequisite = { focus = SWE_Ultimatium_to_Norway  }
+
+		x = -1
+		y = 1
+		cost = 10
+		
+		available_if_capitulated = yes
+
+		completion_reward = {
+		add_state_core = 144
+		add_state_core = 143
+		SWE = {Create_wargoal = {
+        type = annex_everything
+			target = FIN
+			generator = {149}
+		}}}
+		}
+
+
+		focus = {
+		id = SWE_Strike_Estonia
+		icon = GFX_goal_generic_major_war
+        relative_position_id = SWE_Ultimatium_to_Norway
+        prerequisite = { focus = SWE_Ultimatium_to_Norway  }
+
+		x = 1
+		y = 1
+		cost = 10
+		
+		available_if_capitulated = yes
+
+		completion_reward = {
+		SWE = {Create_wargoal = {
+        type = annex_everything
+			target = EST
+			generator = {13}
+		}}}
+		}
+
+		focus = {
+		id = SWE_Reunite_The_Empire
+		icon = GFX_goal_generic_national_unity
+        relative_position_id = SWE_Strike_Estonia
+        prerequisite = { focus = SWE_Strike_Estonia }
+		prerequisite = { focus = SWE_Strike_Finland }
+
+		x = -1
+		y = 1
+		cost = 10
+		
+		available_if_capitulated = yes
+
+		completion_reward = {
+		add_state_core = 148
+		add_state_core = 722
+		add_state_core = 147
+		add_state_core = 149
+		add_state_core = 150
+		add_state_core = 146
+		add_state_core = 111
+		add_state_core = 811
+		add_state_core = 13
+		add_state_core = 812
+		add_state_core = 191
+		add_state_core = 813 
+		add_state_core = 145
+		set_cosmetic_tag = SWE_EMP
+		}
+		}
+
+
+
+
+
+		focus = {
+		id = SWE_Pressure_To_Merge_The_Thones
+		icon = GFX_focus_generic_support_the_left_right
+        relative_position_id = SWE_Reunite_The_Empire
+        prerequisite = { focus = SWE_Reunite_The_Empire }
+
+		x = 0
+		y = 1
+		cost = 10
+		
+		available_if_capitulated = yes
+
+		completion_reward = {
+		NOR = {country_event = sweden.14}
+		DEN = {country_event = sweden.15}
+}
+		}
+
+
+		focus = {
+		id = SWE_Merge_The_Thrones
+		icon = GFX_goal_generic_national_unity
+        relative_position_id = SWE_Pressure_To_Merge_The_Thones
+        prerequisite = { focus = SWE_Pressure_To_Merge_The_Thones  }
+		available = {
+		DEN = {
+		is_subject_of = SWE 
+		}
+		NOR = {
+		is_subject_of = SWE 
+		}
+		}
+
+		x = 0
+		y = 1
+		cost = 10
+		
+		available_if_capitulated = yes
+
+		completion_reward = {
+		NOR = {
+			 annex_country = {
+							target = DEN }
+		set_cosmetic_tag = NOR_DEN
+		add_state_core = 99
+		add_state_core = 37
+		add_state_core = 100
+		add_state_core = 337
+		add_state_core = 101 
+		}
+		}
+		}
+
+
+
+		focus = {
+		id = SWE_Build_Up_The_Sea_Fleet
+		icon = GFX_goal_generic_build_navy
+        relative_position_id = SWE_Force_The_Hand
+        prerequisite = { focus = SWE_Force_The_Hand focus = SWE_Finalize_Preperations }
+        
+
+		x = -2
+		y = 1
+		cost = 10
+		
+		available_if_capitulated = yes
+
+		completion_reward = {
+			 random_owned_controlled_state = {
+				limit = {
+					dockyard > 0
+					free_building_slots = {
+						building = dockyard
+						size > 1
+						include_locked = yes
+					}
+				}
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+					type = dockyard
+					level = 2
+					instant_build = yes
+				}
+			}
+			random_owned_controlled_state = {
+				limit = {
+					dockyard > 0
+					free_building_slots = {
+						building = dockyard
+						size > 1
+						include_locked = yes
+					}
+				}
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+					type = dockyard
+					level = 2
+					instant_build = yes
+				}
+			}
+
+			if = {
+				limit = {
+					NOT = {
+						any_owned_state = {
+							dockyard > 0
+							free_building_slots = {
+								building = dockyard
+								size > 0
+								include_locked = yes
+							}
+						}
+					}
+				}
+				random_owned_controlled_state = {
+					limit = {
+						free_building_slots = {
+							building = dockyard
+							size > 1
+							include_locked = yes
+						}
+					}
+					add_extra_state_shared_building_slots = 2
+					add_building_construction = {
+						type = dockyard
+						level = 2
+						instant_build = yes
+					}
+				}
+				random_owned_controlled_state = {
+					limit = {
+						free_building_slots = {
+							building = dockyard
+							size > 1
+							include_locked = yes
+						}
+					}
+					add_extra_state_shared_building_slots = 2
+					add_building_construction = {
+						type = dockyard
+						level = 2
+						instant_build = yes
+					}
+				}				
+			}
+}
+}
+
+
+		focus = {
+		id = SWE_Communist_Rallys
+		icon = GFX_goal_generic_build_navy
+        relative_position_id = SWE_Adopt_Interventionism 
+        prerequisite = { focus = SWE_Adopt_Interventionism  }
+        
+
+		x = -4
+		y = 1
+		cost = 10
+		
+		available_if_capitulated = yes
+
+		completion_reward = {
+			 add_popularity = {
+						ideology = communism
+						popularity = 0.15 }
+        
+		}
+		}
+
+
+		focus = {
+		id = SWE_Support_the_Right
+		icon = GFX_goal_generic_build_navy
+        relative_position_id = SWE_Adopt_Interventionism 
+        prerequisite = { focus = SWE_Adopt_Interventionism  }
+        
+
+		x = 4
+		y = 1
+		cost = 10
+		
+		available_if_capitulated = yes
+
+		completion_reward = {
+			add_popularity = {
+						ideology = fascism
+						popularity = 0.15 }
+		}
+		}
+	
+	
+		
+
+
+
+
+            
+     

@@ -828,3 +828,11 @@ CAN_ANC_USA = {
 	color = rgb { 226 230 2 }
 	color_ui = rgb { 226 230 2 }
 }
+SWE_UN = {
+	color = rgb { 8 9 79 }
+	color_ui = rgb { 8 9 79 }
+}
+DZG_UN = {
+	color = rgb { 8 9 79 }
+	color_ui = rgb { 8 9 79 }
+}

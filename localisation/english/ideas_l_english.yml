@@ -2672,3 +2672,5 @@
  ALREADY_HAS_ADVISOR_WITH_TRAIT:0 "There is already an appointed advisor with this trait."
  POL_investments_monarchist:0 "Monarchist Investments"
  CHANGE_ADVISOR:1 "\nYou can replace this advisor by clicking here and selecting a replacement."
+ improve_war_support:0 "Improve War Support"
+ improve_war_support_desc:0 "Swedens support for a war is at an all time low if we wish to reach our goals we need to change this"

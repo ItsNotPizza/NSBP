@@ -1,0 +1,12 @@
+focus_tree = {
+	id = Sierra_leone_focus
+	
+	country = {
+		factor = 0
+		
+		modifier = {
+			add = 10
+			tag = SIE 
+			#always = no
+		}
+	}

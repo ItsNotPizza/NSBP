@@ -1,0 +1,204 @@
+SWE_elections = {
+    SWE_increase_influnce_in_Svealand = {
+
+		icon = eng_blackshirt_march
+
+		available = {
+			has_full_control_of_state = 141
+		}
+
+		highlight_states = {
+ highlight_state_targets = { state = 141 } 
+}
+
+		on_map_mode = map_only
+
+		days_re_enable = 90
+
+		cost = 100
+
+		fire_only_once = yes
+
+		visible = {
+			NOT = { has_government = communism }
+		}
+
+		cancel_if_not_visible = yes
+
+		complete_effect = {
+            add_popularity = {
+						ideology = communism
+						popularity = 0.1 }
+		}
+	}
+
+	 SWE_increase_influnce_in_Scania = {
+
+		icon = eng_blackshirt_march
+
+		available = {
+			has_full_control_of_state = 138
+		}
+
+		highlight_states = {
+ highlight_state_targets = { state = 138 } 
+}
+
+		on_map_mode = map_only
+							
+
+		days_re_enable = 90
+
+		cost = 50
+
+		fire_only_once = yes
+
+		visible = {
+			NOT = { has_government = communism }
+		}
+
+		cancel_if_not_visible = yes
+
+		complete_effect = {
+            add_popularity = {
+						ideology = communism
+						popularity = 0.07 }
+		}
+	 }
+
+
+	 SWE_increase_influnce_in_Smaland = {
+
+		icon = eng_blackshirt_march
+
+		available = {
+			has_full_control_of_state = 139
+		}
+
+		highlight_states = {
+ highlight_state_targets = { state = 139 } 
+}
+
+		on_map_mode = map_only
+
+		days_re_enable = 90
+
+		cost = 40
+
+		fire_only_once = yes
+
+		visible = {
+			NOT = { has_government = communism }
+		}
+
+		cancel_if_not_visible = yes
+
+		complete_effect = {
+            add_popularity = {
+						ideology = communism
+						popularity = 0.05 }
+		}
+	 }
+
+
+	  SWE_increase_influnce_in_VasterGotland = {
+
+		icon = eng_blackshirt_march
+
+		available = {
+			has_full_control_of_state = 140
+		}
+
+		highlight_states = {
+ highlight_state_targets = { state = 140 } 
+}
+
+		on_map_mode = map_only
+
+		days_re_enable = 90
+
+		cost = 65
+
+		fire_only_once = yes
+
+		visible = {
+			NOT = { has_government = communism }
+		}
+
+		cancel_if_not_visible = yes
+
+		complete_effect = {
+            add_popularity = {
+						ideology = communism
+						popularity = 0.08 }
+		}
+	  }
+
+
+
+	  SWE_increase_influnce_in_Norrland = {
+
+		icon = eng_blackshirt_march
+
+		available = {
+			has_full_control_of_state = 38
+		}
+
+		highlight_states = {
+ highlight_state_targets = { state = 38 } 
+}
+
+		on_map_mode = map_only
+
+		days_re_enable = 90
+
+		cost = 45
+
+		fire_only_once = yes
+
+		visible = {
+			NOT = { has_government = communism }
+		}
+
+		cancel_if_not_visible = yes
+
+		complete_effect = {
+            add_popularity = {
+						ideology = communism
+						popularity = 0.06 }
+		}
+	  }
+
+
+
+	  SWE_increase_influnce_in_Lappland = {
+
+		icon = eng_blackshirt_march
+
+		available = {
+			has_full_control_of_state = 666
+		}
+
+		highlight_states = {
+ highlight_state_targets = { state = 666 } 
+}
+
+		on_map_mode = map_only
+
+		days_re_enable = 90
+
+		cost = 20
+
+		fire_only_once = yes
+
+		visible = {
+			NOT = { has_government = communism }
+		}
+
+		cancel_if_not_visible = yes
+
+		complete_effect = {
+            add_popularity = {
+						ideology = communism
+						popularity = 0.02 }
+		}

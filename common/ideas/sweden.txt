@@ -20,7 +20,26 @@ ideas = {
 				enemy_justify_war_goal_time = 0.1
 			}
 		}
-	
+		
+
+		improve_war_support = {
+			
+			allowed = {
+				always = no
+			}
+
+			allowed_civil_war = {
+				has_government = democratic
+			}
+
+			removal_cost = -1
+
+			picture = generic_victors_of_ww1
+			
+			modifier = {
+			war_support_weekly = 0.005
+			}
+		}
 	}
 
 	tank_manufacturer = { 
